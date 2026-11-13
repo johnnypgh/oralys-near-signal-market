@@ -1,0 +1,8 @@
+{
+  "_note": "Single home for the buyer agent's numbers. Other files link here instead of repeating them. Values are demo settings, not recommendations.",
+  "budget_near": "0.1",
+  "min_quality": 70,
+  "max_price_near": "0.05",
+  "topics": ["transit-board", "earnings-call", "press-briefing"],
+  "ttl_seconds": 600
+}

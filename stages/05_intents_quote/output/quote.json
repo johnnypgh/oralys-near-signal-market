@@ -1,0 +1,62 @@
+{
+  "note": "DRY QUOTE ONLY. No deposit address, no signing, no funds moved. NEAR Intents has no testnet.",
+  "fetched_at": "2026-11-12T22:57:17.952655+00:00",
+  "endpoint": "https://1click.chaindefuser.com/v0/quote",
+  "http_status": 201,
+  "request": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "amount": "1000000",
+    "recipient": "297c47802abdc05733c2a0662e4fb6e8cc92b3d8d1378524cc0e165817e01858",
+    "recipientType": "DESTINATION_CHAIN",
+    "refundTo": "0x1111111111111111111111111111111111111111",
+    "refundType": "ORIGIN_CHAIN",
+    "deadline": "2026-11-12T23:07:17.000Z"
+  },
+  "response": {
+    "quote": {
+      "amountIn": "1000000",
+      "amountInFormatted": "1.0",
+      "amountInUsd": "0.999549000000",
+      "minAmountIn": "1000000",
+      "amountOut": "995521",
+      "amountOutFormatted": "0.995521",
+      "amountOutUsd": "0.995072020029",
+      "minAmountOut": "985565",
+      "timeEstimate": 35,
+      "refundFee": "2400",
+      "withdrawFee": "4277"
+    },
+    "quoteRequest": {
+      "dry": true,
+      "depositMode": "SIMPLE",
+      "swapType": "EXACT_INPUT",
+      "slippageTolerance": 100,
+      "originAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+      "depositType": "ORIGIN_CHAIN",
+      "destinationAsset": "nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+      "amount": "1000000",
+      "refundTo": "0x1111111111111111111111111111111111111111",
+      "refundType": "ORIGIN_CHAIN",
+      "recipient": "297c47802abdc05733c2a0662e4fb6e8cc92b3d8d1378524cc0e165817e01858",
+      "recipientType": "DESTINATION_CHAIN",
+      "deadline": "2026-11-12T23:07:17.000Z",
+      "confidentiality": "public",
+      "quoteWaitingTimeMs": 0,
+      "insured": false,
+      "appFees": [
+        {
+          "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+          "fee": 1
+        }
+      ]
+    },
+    "signature": "ed25519:4Wwcru6NGVqLt5c62Csbf96FnhZcBXbDQwoVnS39wHvwmZwyZD27vNQepQKgKueHjn5MHqrxNi8VhNX7crF7vTnB",
+    "timestamp": "2026-11-12T22:57:17.416Z",
+    "correlationId": "cf325349-f776-4b9c-9825-0a7722128e8a"
+  }
+}

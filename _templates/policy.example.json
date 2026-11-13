@@ -1,0 +1,8 @@
+{
+  "_note": "Copy to _shared/policy.json and edit. Demo values only.",
+  "budget_near": "0.1",
+  "min_quality": 70,
+  "max_price_near": "0.05",
+  "topics": ["transit-board"],
+  "ttl_seconds": 600
+}

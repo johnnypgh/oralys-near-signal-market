@@ -1,0 +1,103 @@
+{
+  "network": "sandbox",
+  "started_at": "2026-11-12T23:14:01.932Z",
+  "market": "market.sandbox",
+  "buyer": "buyer.sandbox",
+  "seller": "seller.sandbox",
+  "signer_public_key": "ed25519:CkLUP92GtRWaJgPwnGLRoRC1bZ1maFt2yFyMrdYkpbd5",
+  "wasm_sha256_bs58": "ACVxqCa67pvtCnBrvJzgFWndXbNQ8tF1zoVRgQSpKBFC",
+  "txs": [
+    {
+      "step": "create market.sandbox",
+      "hash": "4adQHXDSMxR5LpeGKm77Ws2pHuXriQFrTVyUYs9tS2nP",
+      "ok": true,
+      "at": "2026-11-12T23:14:03.610Z"
+    },
+    {
+      "step": "create buyer.sandbox",
+      "hash": "6oNahpLQh5RWGsuUjuW6Ub89vVJVib22rv1bkrVHkjUi",
+      "ok": true,
+      "at": "2026-11-12T23:14:03.610Z"
+    },
+    {
+      "step": "create seller.sandbox",
+      "hash": "B4qWYQ8EvMtjK7JG2GKhSB95KE2xN6hb1ED8KD4qJ1b1",
+      "ok": true,
+      "at": "2026-11-12T23:14:03.611Z"
+    },
+    {
+      "step": "deploy contract to market.sandbox",
+      "hash": "4Q9KRdeu8YYJ55atHHQSVxX9KaLKmqQ2dubwPvE26ZMR",
+      "ok": true,
+      "at": "2026-11-12T23:14:04.476Z"
+    },
+    {
+      "step": "init market",
+      "hash": "C81qNrBqGR828EuUdx3CUXUU5ttppamrxbnQ38K475JZ",
+      "ok": true,
+      "at": "2026-11-12T23:14:04.476Z"
+    },
+    {
+      "step": "open_request #0",
+      "hash": "DxKPQZmu3MUqp6SZEn5Dwn4YWMbxBgREDEPWYSiYS4UX",
+      "ok": true,
+      "at": "2026-11-12T23:14:05.216Z"
+    },
+    {
+      "step": "fulfill #0",
+      "hash": "FtfAJHzqcprtKrB9DfViamuzx2QMtaSBviWbVF3A1tGr",
+      "ok": true,
+      "at": "2026-11-12T23:14:06.084Z"
+    },
+    {
+      "step": "open_request #1",
+      "hash": "FdkFjfh7ebrRofKaxbiVkNj8DCCYymFpsUphi2TRVqWe",
+      "ok": true,
+      "at": "2026-11-12T23:14:06.823Z"
+    },
+    {
+      "step": "fulfill #1",
+      "hash": "As8buUjYLDHL3egZNDTymL8syZKGciz15NHDB1EUjPQq",
+      "ok": true,
+      "at": "2026-11-12T23:14:07.687Z"
+    },
+    {
+      "step": "open_request #2",
+      "hash": "BLx2XSfu58UXH81VZZt2kagUAwbuFbUkYJQADkbTJ5Uu",
+      "ok": true,
+      "at": "2026-11-12T23:14:08.427Z"
+    },
+    {
+      "step": "fulfill #2",
+      "hash": "BS7kJSCp3iJHhQETXFozfG2uBA2MigJyx1shZVHfS9jS",
+      "ok": true,
+      "at": "2026-11-12T23:14:09.292Z"
+    },
+    {
+      "step": "open_request #3",
+      "hash": "BvmazYn3ZjzGjYYaxRRxViQBWVG1Fv8H3eUHah5HKQif",
+      "ok": true,
+      "at": "2026-11-12T23:14:10.034Z"
+    },
+    {
+      "step": "fulfill with forged signature",
+      "hash": "7ztHzSCY9m2kznLxa4d2rTXbdaNYdjNMMv8jNjxqPufs",
+      "ok": false,
+      "error": "invalid signature",
+      "at": "2026-11-12T23:14:10.777Z"
+    },
+    {
+      "step": "fulfill below minimum",
+      "hash": "56bVA2kYFXGQ4RCRokQ7iH1FcBXcDbJgw34L4k3y3hfw",
+      "ok": false,
+      "error": "quality score below buyer minimum",
+      "at": "2026-11-12T23:14:11.517Z"
+    },
+    {
+      "step": "refund after deadline",
+      "hash": "7RiJQ3HDxubqVgiJWdZAx7xbypMrV17YzSH7AC3CsbmG",
+      "ok": true,
+      "at": "2026-11-12T23:14:35.412Z"
+    }
+  ]
+}

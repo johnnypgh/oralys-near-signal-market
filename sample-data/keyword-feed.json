@@ -1,0 +1,80 @@
+{
+  "notice": "SAMPLE DATA. Every segment below is made up for the v2 keyword demo. The events, speakers and quotes are fictional. NVIDIA and Clarity Act appear only because they are the example keywords from the request spec. No real transcripts or Oralys customer data are included.",
+  "feed": "oralys-sample-keyword-feed",
+  "schema_version": 2,
+  "replay_anchor": "2026-11-13T15:00:00Z",
+  "segments": [
+    {
+      "segment_id": "sd-r1-01",
+      "recording_id": "sd-r1",
+      "label": "SAMPLE DATA",
+      "event": "Fictional fintech policy forum, opening session",
+      "recorded_at": "2026-11-13T13:20:00Z",
+      "quality_score": 85,
+      "text": "SAMPLE DATA. Speaker A: NVIDIA was mentioned in the opening remarks. Speaker B: We moved on to hiring."
+    },
+    {
+      "segment_id": "sd-r1-02",
+      "recording_id": "sd-r1",
+      "label": "SAMPLE DATA",
+      "event": "Fictional fintech policy forum, market structure panel",
+      "recorded_at": "2026-11-13T14:10:00Z",
+      "quality_score": 82,
+      "text": "SAMPLE DATA. Moderator: Next topic is the market structure bill. Panelist B: The Clarity draft goes to committee next week. Panelist A: If the Act passes, custody rules change for brokers. Moderator: We will take questions after the break."
+    },
+    {
+      "segment_id": "sd-r2-01",
+      "recording_id": "sd-r2",
+      "label": "SAMPLE DATA",
+      "event": "Fictional chip supply meetup",
+      "recorded_at": "2026-11-13T14:25:00Z",
+      "quality_score": 91,
+      "text": "SAMPLE DATA. Analyst: Chip supply came up in every call this week. Guest: NVIDIA lead times are still the bottleneck for our lab. Analyst: Thanks, that is useful."
+    },
+    {
+      "segment_id": "sd-r2-02",
+      "recording_id": "sd-r2",
+      "label": "SAMPLE DATA",
+      "event": "Fictional chip supply meetup, hallway audio",
+      "recorded_at": "2026-11-13T14:40:00Z",
+      "quality_score": 48,
+      "text": "SAMPLE DATA. Guest: Audio cut out, something about NVIDIA and the schedule."
+    },
+    {
+      "segment_id": "sd-r3-01",
+      "recording_id": "sd-r3",
+      "label": "SAMPLE DATA",
+      "event": "Fictional exchange fees roundtable",
+      "recorded_at": "2026-11-13T14:50:00Z",
+      "quality_score": 88,
+      "text": "SAMPLE DATA. Speaker E: Actually, clarity on fees matters more than speed. Speaker F: Agreed, the actions list comes first."
+    },
+    {
+      "segment_id": "sd-r3-02",
+      "recording_id": "sd-r3",
+      "label": "SAMPLE DATA",
+      "event": "Fictional data center hardware panel",
+      "recorded_at": "2026-11-13T14:55:00Z",
+      "quality_score": 79,
+      "text": "SAMPLE DATA. Host: Welcome back to the hardware panel. Speaker C: Our first cluster ran on NVIDIA cards. Speaker D: Power was the main cost. Host: Cooling came up in every question. Speaker C: The next order is NVIDIA again, pending budget."
+    },
+    {
+      "segment_id": "sd-r4-01",
+      "recording_id": "sd-r4",
+      "label": "SAMPLE DATA",
+      "event": "Fictional city council tech committee",
+      "recorded_at": "2026-11-13T15:02:00Z",
+      "quality_score": 90,
+      "text": "SAMPLE DATA. Chair: The Clarity Act hearing is set for Tuesday. Member: We want written answers first."
+    },
+    {
+      "segment_id": "sd-r4-02",
+      "recording_id": "sd-r4",
+      "label": "SAMPLE DATA",
+      "event": "Fictional city council tech committee",
+      "recorded_at": "2026-11-13T15:04:00Z",
+      "quality_score": 80,
+      "text": "SAMPLE DATA. Host: That wraps the morning session. Lunch is in the main hall."
+    }
+  ]
+}

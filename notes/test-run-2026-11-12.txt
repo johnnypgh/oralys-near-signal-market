@@ -1,0 +1,101 @@
+Oralys Signal Market test run
+date: 2026-11-12 18:13:08 EST
+commit: 1a9c55b
+toolchain: rustc 1.100.0 (0ef1bc386 2026-11-09) / cargo 1.100.0 (3acc79c0c 2026-11-05) / cargo-near-near 0.23.0
+
+===== 1. cargo test (contract unit tests)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s
+     Running unittests src/lib.rs (target/debug/build/oralys-signal-market/0ba33f84ae543249/out/oralys_signal_market-0ba33f84ae543249)
+
+running 18 tests
+test tests::open_without_deposit_rejected - should panic ... ok
+test tests::open_with_bad_min_quality_rejected - should panic ... ok
+test tests::open_request_escrows_budget_and_logs_event ... ok
+test tests::fulfill_after_deadline_rejected - should panic ... ok
+test tests::bad_hash_rejected - should panic ... ok
+test tests::double_fulfill_rejected - should panic ... ok
+test tests::refund_after_deadline ... ok
+test tests::refund_after_fulfill_rejected - should panic ... ok
+test tests::refund_before_deadline_rejected - should panic ... ok
+test tests::set_signer_owner_only - should panic ... ok
+test tests::score_below_minimum_rejected - should panic ... ok
+test tests::rotated_signer_is_used ... ok
+test tests::score_exactly_at_minimum_is_accepted ... ok
+test tests::signature_for_other_request_rejected - should panic ... ok
+test tests::signature_from_wrong_key_rejected - should panic ... ok
+test tests::tampered_score_rejected - should panic ... ok
+test tests::valid_fulfillment_marks_paid ... ok
+test tests::views_list_requests ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+   Doc-tests oralys_signal_market
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+exit: 0
+
+===== 2. cargo near build non-reproducible-wasm
+• Skipped running wasm-opt as final target exists and is newer than wasm produced by cargo
+
+✓ Contract successfully built! (in CARGO_NEAR_BUILD_ENVIRONMENT=host)
+     -                Binary: /workspace/oralys-near-signal-market/contract/target/near/oralys_signal_market.wasm
+     -                  Size: 186.2 KB (186178 bytes)
+     - SHA-256 checksum hex : 88ab51c16bc46c5768c0a85cde2aa4a4bbe03b295a8d52ea09814edc6cd5593f
+     - SHA-256 checksum bs58: ACVxqCa67pvtCnBrvJzgFWndXbNQ8tF1zoVRgQSpKBFC
+     -                   ABI: /workspace/oralys-near-signal-market/contract/target/near/oralys_signal_market_abi.json
+     -          Embedded ABI: /workspace/oralys-near-signal-market/contract/target/near/oralys_signal_market_abi.zst
+    Finished cargo near build in 2s
+Here is the console command if you ever need to re-run it again:
+cargo near build non-reproducible-wasm
+
+===== 3. sandbox integration tests (npm run test:sandbox)
+✔ config reflects the registered signer and seller (2569.15263ms)
+✔ signing message matches the contract byte for byte (2.566609ms)
+✔ valid signed fulfillment pays the seller (1608.056038ms)
+✔ signature from a different key is rejected and escrow stays open (1476.580316ms)
+✔ tampered score (signed 74, submitted 95) is rejected (1478.622538ms)
+✔ validly signed score below the buyer minimum is rejected (1488.388138ms)
+✔ double fulfillment is rejected without changing fulfillment or paying again (2364.170263ms)
+✔ refund after the deadline returns the budget to the buyer (7038.178201ms)
+✔ buyer agent skips signals below its bar without spending (0.402228ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18294.978503
+exit: 0
+
+===== 4. tools tests (python3 -I _tools/test_tools.py)
+test_guard_blocks_model_buy_that_rules_forbid (__main__.GuardTest.test_guard_blocks_model_buy_that_rules_forbid) ... ok
+test_guard_fills_missing_answers_from_rules (__main__.GuardTest.test_guard_fills_missing_answers_from_rules) ... ok
+test_model_may_skip_an_allowed_signal (__main__.GuardTest.test_model_may_skip_an_allowed_signal) ... ok
+test_quote_request_is_always_dry (__main__.IntentsTest.test_quote_request_is_always_dry) ... ok
+test_budget_is_never_exceeded (__main__.RulesTest.test_budget_is_never_exceeded) ... ok
+test_rules_follow_policy (__main__.RulesTest.test_rules_follow_policy) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+exit: 0
+
+===== 5. typecheck (npx tsc --noEmit)
+exit: 0
+
+===== 6. walk test (python3 -I _tools/links.py)
+scanned AGENTS.md
+scanned CLAUDE.md
+scanned CONTEXT.md
+scanned stages/02_evaluate/CONTEXT.md
+scanned stages/05_intents_quote/CONTEXT.md
+scanned stages/04_report/CONTEXT.md
+scanned stages/01_intake/CONTEXT.md
+scanned stages/03_settle/CONTEXT.md
+OK: 55 paths in 8 files resolve
+exit: 0

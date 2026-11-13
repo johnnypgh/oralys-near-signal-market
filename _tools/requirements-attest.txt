@@ -1,0 +1,4 @@
+# Optional. Offline unit tests do not require these packages.
+dcap-qvl==0.7.1
+pynacl
+eth-account

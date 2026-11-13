@@ -1,0 +1,74 @@
+[
+  {
+    "step": "open_request #1",
+    "hash": "6Jq6eoWrVYH6CBTLv1JNnaoDCUJ2PdebgT78osmSAQf3",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/6Jq6eoWrVYH6CBTLv1JNnaoDCUJ2PdebgT78osmSAQf3",
+    "at": "2026-11-12T23:14:48.848Z"
+  },
+  {
+    "step": "fulfill #1",
+    "hash": "8QhgXaHN8zX4W37NcqidHP4N7DMqG8TB3umU7L37Mn28",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/8QhgXaHN8zX4W37NcqidHP4N7DMqG8TB3umU7L37Mn28",
+    "at": "2026-11-12T23:14:52.679Z"
+  },
+  {
+    "step": "open_request #2",
+    "hash": "2ethFqpbdEBcFTR4bdFWSsee9Cb1zDdK9zNpbAnmbeeb",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/2ethFqpbdEBcFTR4bdFWSsee9Cb1zDdK9zNpbAnmbeeb",
+    "at": "2026-11-12T23:14:56.712Z"
+  },
+  {
+    "step": "fulfill #2",
+    "hash": "5tCosw1Lrzk9GJ3EX2pXpwaijHX4CeVHxgwAjGawXG5z",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/5tCosw1Lrzk9GJ3EX2pXpwaijHX4CeVHxgwAjGawXG5z",
+    "at": "2026-11-12T23:15:00.789Z"
+  },
+  {
+    "step": "open_request #3",
+    "hash": "8GM64izRcd9jmGU95v3Juzsnsv6r9Zj4gTmSxvmP5QTj",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/8GM64izRcd9jmGU95v3Juzsnsv6r9Zj4gTmSxvmP5QTj",
+    "at": "2026-11-12T23:15:04.790Z"
+  },
+  {
+    "step": "fulfill #3",
+    "hash": "2LSxyngZUHGQYvKQUBa8hgawiZaUB9SBr5KofC4tWB6D",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/2LSxyngZUHGQYvKQUBa8hgawiZaUB9SBr5KofC4tWB6D",
+    "at": "2026-11-12T23:15:08.295Z"
+  },
+  {
+    "step": "open_request #4",
+    "hash": "CwZ3gdjBFVpAs4GnKTJk8oUTHRMKhAVkc6SCqAaEp6gE",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/CwZ3gdjBFVpAs4GnKTJk8oUTHRMKhAVkc6SCqAaEp6gE",
+    "at": "2026-11-12T23:15:11.957Z"
+  },
+  {
+    "step": "fulfill with forged signature",
+    "hash": "92yzx3mbKFArpVWcfWHW7hv1q8oGqQkKQEofr6kL1Fm9",
+    "ok": false,
+    "error": "invalid signature",
+    "link": "https://testnet.nearblocks.io/txns/92yzx3mbKFArpVWcfWHW7hv1q8oGqQkKQEofr6kL1Fm9",
+    "at": "2026-11-12T23:15:15.163Z"
+  },
+  {
+    "step": "fulfill below minimum",
+    "hash": "GB16nbqJgCTkGHUJ9F3ZA4Qb74fxFJFVrwoJXJAnPTmu",
+    "ok": false,
+    "error": "quality score below buyer minimum",
+    "link": "https://testnet.nearblocks.io/txns/GB16nbqJgCTkGHUJ9F3ZA4Qb74fxFJFVrwoJXJAnPTmu",
+    "at": "2026-11-12T23:15:18.666Z"
+  },
+  {
+    "step": "refund after deadline",
+    "hash": "4XsmTRb27cMrAq6tDfT2j6buBUtTyRrunSnPqqnGq773",
+    "ok": true,
+    "link": "https://testnet.nearblocks.io/txns/4XsmTRb27cMrAq6tDfT2j6buBUtTyRrunSnPqqnGq773",
+    "at": "2026-11-12T23:15:39.395Z"
+  }
+]

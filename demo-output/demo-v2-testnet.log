@@ -1,0 +1,18 @@
+Oralys v2 keyword requests on testnet. SAMPLE DATA only.
+NEAR is Oralys's home chain. Tracks: Agent Economy, Open Innovation and Privacy.
+Open request with 600 second deadline: ok (tx BvYm3SQQ7z7t9qQn1jMV2u84FXSCTGePrKp2RwdFYZ3n)
+Forged signature: REJECTED, invalid signature (tx DTdGpbrvf3EZT4LoSuaSsG22emrhUwqMTZx8EsQK3hiz)
+Out of window: REJECTED, recorded_at is outside the request window (tx AmkxihxGkBq73GXgx6VTRAg23KCs5qNr23fsadg4FYhC)
+Low quality: REJECTED, quality score below buyer minimum (tx J4z6zvoeJpZrKzoqBaa9D9TAasJw1xKRLiMVVoKeoetz)
+Pay sd-r1-02-s2: ok (tx 9jTJ1gokyGXEDn5Zgzi9RgjzEdVsc777tjKUQo25Vpbr)
+Double pay: REJECTED, excerpt already paid for this request (tx HRnpHwtwpmneRV8cvGiEq9iVUsNT3f3XQz69iZpiMMtm)
+Pay sd-r2-01-s2: ok (tx 96HrNvRgJgNWDduhrx5YbWW2nCP32MDTBSifz38igcev)
+Pay sd-r3-02-s2: ok (tx 6w56ePCpRSq3HzyjvLfUoMoGkuygFp68Vp2zDkmTx5CM)
+Pay sd-r3-02-s5: ok (tx Hpd3gJyjcutjkatFQavyhCfn3pCAK5KXEvy9DVQvkU76)
+Pay sd-r4-01-s1: ok (tx 289gEUdBLsDko6mdapwJukEC28equ2tMnZ8zqQcikvT4)
+5 excerpts paid. Status: Exhausted.
+Open request with 20 second deadline: ok (tx 9Zk1iX78QMsHkao7RUeJSXRPruM8BEHbYNryj5iypic7)
+Pay one excerpt on short request: ok (tx HskNotrmzzdFzzxermuEmocaZQdMJYQVW7P2DRaZgHaL)
+Wait 19 seconds for the refund deadline.
+Refund after deadline: ok (tx CEs5omy2JXD7ysXp8ocTQ266BvUusc9c22WLSYm6dWFo)
+1 refund completed: 0.04 NEAR remaining budget. Status: Refunded.

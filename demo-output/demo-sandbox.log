@@ -1,0 +1,76 @@
+Oralys Signal Market demo (NEAR, Agent Economy and Open Innovation tracks)
+network: sandbox
+feed: oralys-sample-feed. SAMPLE DATA. Every entry below is made up for this hackathon demo. No real transcripts, events, people or Oralys customer data are included.
+
+== 1. Setup ==
+local sandbox running at http://127.0.0.1:45093
+market contract: market.sandbox
+buyer agent:     buyer.sandbox
+seller payout:   seller.sandbox
+oracle signer public key: ed25519:CkLUP92GtRWaJgPwnGLRoRC1bZ1maFt2yFyMrdYkpbd5
+   tx 4adQHXDSMxR5LpeGKm77Ws2pHuXriQFrTVyUYs9tS2nP
+   tx 6oNahpLQh5RWGsuUjuW6Ub89vVJVib22rv1bkrVHkjUi
+   tx B4qWYQ8EvMtjK7JG2GKhSB95KE2xN6hb1ED8KD4qJ1b1
+ - deploy contract to market.sandbox
+   tx 4Q9KRdeu8YYJ55atHHQSVxX9KaLKmqQ2dubwPvE26ZMR
+ - init market
+   tx C81qNrBqGR828EuUdx3CUXUU5ttppamrxbnQ38K475JZ
+
+== 2. Buyer agent reads the feed and buys what clears its bar ==
+agent budget 0.1 NEAR, minimum quality 70
+
+[sample-001] Fictional city transit board meeting, fare discussion (score 88, 0.02 NEAR)
+ - BUY: quality 88 meets my minimum of 70
+ - opened request #0, 0.02 NEAR held in escrow
+   tx DxKPQZmu3MUqp6SZEn5Dwn4YWMbxBgREDEPWYSiYS4UX
+ - oracle delivered a signed fulfillment, contract verified it and paid the seller
+   tx FtfAJHzqcprtKrB9DfViamuzx2QMtaSBviWbVF3A1tGr
+ - on chain record: signal sample-001, score 88, keyed hash 77d0969cf2fd3646...
+ - agent budget left: 0.0800 NEAR
+
+[sample-002] Fictional company quarterly call, guidance section (score 74, 0.02 NEAR)
+ - BUY: quality 74 meets my minimum of 70
+ - opened request #1, 0.02 NEAR held in escrow
+   tx FdkFjfh7ebrRofKaxbiVkNj8DCCYymFpsUphi2TRVqWe
+ - oracle delivered a signed fulfillment, contract verified it and paid the seller
+   tx As8buUjYLDHL3egZNDTymL8syZKGciz15NHDB1EUjPQq
+ - on chain record: signal sample-002, score 74, keyed hash ee7886581610feb8...
+ - agent budget left: 0.0600 NEAR
+
+[sample-003] Fictional transit board meeting, partial audio (score 52, 0.02 NEAR)
+ - SKIP: quality 52 is below my minimum of 70
+
+[sample-004] Fictional agency press briefing, weather response (score 91, 0.02 NEAR)
+ - BUY: quality 91 meets my minimum of 70
+ - opened request #2, 0.02 NEAR held in escrow
+   tx BLx2XSfu58UXH81VZZt2kagUAwbuFbUkYJQADkbTJ5Uu
+ - oracle delivered a signed fulfillment, contract verified it and paid the seller
+   tx BS7kJSCp3iJHhQETXFozfG2uBA2MigJyx1shZVHfS9jS
+ - on chain record: signal sample-004, score 91, keyed hash 692c6e45b1cd62c8...
+ - agent budget left: 0.0400 NEAR
+
+[sample-005] Fictional company call, single phone line (score 39, 0.02 NEAR)
+ - SKIP: quality 39 is below my minimum of 70
+
+[sample-006] Fictional county briefing, road closures (score 63, 0.02 NEAR)
+ - SKIP: quality 63 is below my minimum of 70
+
+seller balance change: +0.0591 NEAR (payments minus the seller's own gas)
+
+== 3. Guardrails enforced by the contract ==
+buyer opens a stricter request for sample-002 (min quality 80, 20 second deadline)
+   tx BvmazYn3ZjzGjYYaxRRxViQBWVG1Fv8H3eUHah5HKQif
+a) fulfillment signed by a key that is not the registered Oralys signer
+   result: REJECTED, invalid signature
+   tx 7ztHzSCY9m2kznLxa4d2rTXbdaNYdjNMMv8jNjxqPufs
+b) genuine signature, but score 74 is below the buyer's 80
+   result: REJECTED, quality score below buyer minimum
+   tx 56bVA2kYFXGQ4RCRokQ7iH1FcBXcDbJgw34L4k3y3hfw
+c) nobody delivers in time, so the buyer takes the budget back
+   waiting about 24 seconds for the deadline
+   result: REFUNDED 0.02 NEAR to buyer.sandbox
+   tx 7RiJQ3HDxubqVgiJWdZAx7xbypMrV17YzSH7AC3CsbmG
+   request #3 status: Refunded
+
+== Summary ==
+transactions: 15, rejected on purpose: 2

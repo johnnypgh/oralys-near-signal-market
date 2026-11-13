@@ -1,0 +1,31 @@
+{
+  "model": "z-ai/glm-5.3-flash",
+  "signing_algo": "ecdsa",
+  "nonce": "1bbbd88d1461ac013e23e22cb1ae769ab50ae37f5dc9086f097f41ced3ac8e24",
+  "reports": {
+    "gateway": {
+      "signing_algo": "ecdsa",
+      "signing_address": "0xb98a789cdc4817275f5155593ba73ef2a957e779",
+      "request_nonce": "1bbbd88d1461ac013e23e22cb1ae769ab50ae37f5dc9086f097f41ced3ac8e24",
+      "tcb_status": "UpToDate",
+      "report_data": "b98a789cdc4817275f5155593ba73ef2a957e7790000000000000000000000001bbbd88d1461ac013e23e22cb1ae769ab50ae37f5dc9086f097f41ced3ac8e24",
+      "mr_config_id": "01877959253d2406f05fa718840fd157b8e647547827e9524cb33081a2a8fcb78b000000000000000000000000000000",
+      "rt_mr3": "de54cfe5803a8263e86372b613636440395f9567b03c3f1870909254f8b2737617d7020acbb84bc01ff73226b76299d3",
+      "td_attributes": "0000001000000000",
+      "has_nvidia_payload": false,
+      "has_http_report_data": true
+    },
+    "model_0": {
+      "signing_algo": "ecdsa",
+      "signing_address": "0x3b753b4406613c5e70ae640508632b600424fa0c",
+      "request_nonce": "1bbbd88d1461ac013e23e22cb1ae769ab50ae37f5dc9086f097f41ced3ac8e24",
+      "tcb_status": "UpToDate",
+      "report_data": "3b753b4406613c5e70ae640508632b600424fa0c0000000000000000000000001bbbd88d1461ac013e23e22cb1ae769ab50ae37f5dc9086f097f41ced3ac8e24",
+      "mr_config_id": "01c900dc7304663b73b623cd5d941fbdab6f02858017b371ae28de445a16d2e2d0000000000000000000000000000000",
+      "rt_mr3": "4023e007c239ab008b1f97ee0cfdee4478e3a94f82f3dbb20a82c932cc514f1c6b9e4117177d6ebea2ae0b313f68c3cd",
+      "td_attributes": "0000001000000000",
+      "has_nvidia_payload": true,
+      "has_http_report_data": false
+    }
+  }
+}

@@ -1,0 +1,73 @@
+Oralys Signal Market demo (NEAR, Agent Economy and Open Innovation tracks)
+network: testnet
+feed: oralys-sample-feed. SAMPLE DATA. Every entry below is made up for this hackathon demo. No real transcripts, events, people or Oralys customer data are included.
+
+== 1. Setup ==
+reusing market.oralys-signal.testnet
+reusing buyer.oralys-signal.testnet
+reusing seller.oralys-signal.testnet
+market contract: market.oralys-signal.testnet
+buyer agent:     buyer.oralys-signal.testnet
+seller payout:   seller.oralys-signal.testnet
+oracle signer public key: ed25519:6D2PVtfmgJybPk6PF8iKPHr33eQriJAHnR7YP7B6SSNr
+contract on market.oralys-signal.testnet already matches this build (ACVxqCa67pvtCnBrvJzgFWndXbNQ8tF1zoVRgQSpKBFC), not redeploying
+
+== 2. Buyer agent reads the feed and buys what clears its bar ==
+agent budget 0.1 NEAR, minimum quality 70
+
+[sample-001] Fictional city transit board meeting, fare discussion (score 88, 0.02 NEAR)
+ - BUY: quality 88 meets my minimum of 70
+ - opened request #1, 0.02 NEAR held in escrow
+   tx 6Jq6eoWrVYH6CBTLv1JNnaoDCUJ2PdebgT78osmSAQf3  https://testnet.nearblocks.io/txns/6Jq6eoWrVYH6CBTLv1JNnaoDCUJ2PdebgT78osmSAQf3
+ - oracle delivered a signed fulfillment, contract verified it and paid the seller
+   tx 8QhgXaHN8zX4W37NcqidHP4N7DMqG8TB3umU7L37Mn28  https://testnet.nearblocks.io/txns/8QhgXaHN8zX4W37NcqidHP4N7DMqG8TB3umU7L37Mn28
+ - on chain record: signal sample-001, score 88, keyed hash d921d2a619872dce...
+ - agent budget left: 0.0800 NEAR
+
+[sample-002] Fictional company quarterly call, guidance section (score 74, 0.02 NEAR)
+ - BUY: quality 74 meets my minimum of 70
+ - opened request #2, 0.02 NEAR held in escrow
+   tx 2ethFqpbdEBcFTR4bdFWSsee9Cb1zDdK9zNpbAnmbeeb  https://testnet.nearblocks.io/txns/2ethFqpbdEBcFTR4bdFWSsee9Cb1zDdK9zNpbAnmbeeb
+ - oracle delivered a signed fulfillment, contract verified it and paid the seller
+   tx 5tCosw1Lrzk9GJ3EX2pXpwaijHX4CeVHxgwAjGawXG5z  https://testnet.nearblocks.io/txns/5tCosw1Lrzk9GJ3EX2pXpwaijHX4CeVHxgwAjGawXG5z
+ - on chain record: signal sample-002, score 74, keyed hash 2d565f89402f79b4...
+ - agent budget left: 0.0600 NEAR
+
+[sample-003] Fictional transit board meeting, partial audio (score 52, 0.02 NEAR)
+ - SKIP: quality 52 is below my minimum of 70
+
+[sample-004] Fictional agency press briefing, weather response (score 91, 0.02 NEAR)
+ - BUY: quality 91 meets my minimum of 70
+ - opened request #3, 0.02 NEAR held in escrow
+   tx 8GM64izRcd9jmGU95v3Juzsnsv6r9Zj4gTmSxvmP5QTj  https://testnet.nearblocks.io/txns/8GM64izRcd9jmGU95v3Juzsnsv6r9Zj4gTmSxvmP5QTj
+ - oracle delivered a signed fulfillment, contract verified it and paid the seller
+   tx 2LSxyngZUHGQYvKQUBa8hgawiZaUB9SBr5KofC4tWB6D  https://testnet.nearblocks.io/txns/2LSxyngZUHGQYvKQUBa8hgawiZaUB9SBr5KofC4tWB6D
+ - on chain record: signal sample-004, score 91, keyed hash 5a339a3d2f5dc49a...
+ - agent budget left: 0.0400 NEAR
+
+[sample-005] Fictional company call, single phone line (score 39, 0.02 NEAR)
+ - SKIP: quality 39 is below my minimum of 70
+
+[sample-006] Fictional county briefing, road closures (score 63, 0.02 NEAR)
+ - SKIP: quality 63 is below my minimum of 70
+
+seller balance change: +0.0590 NEAR (payments minus the seller's own gas)
+
+== 3. Guardrails enforced by the contract ==
+buyer opens a stricter request for sample-002 (min quality 80, 20 second deadline)
+   tx CwZ3gdjBFVpAs4GnKTJk8oUTHRMKhAVkc6SCqAaEp6gE  https://testnet.nearblocks.io/txns/CwZ3gdjBFVpAs4GnKTJk8oUTHRMKhAVkc6SCqAaEp6gE
+a) fulfillment signed by a key that is not the registered Oralys signer
+   result: REJECTED, invalid signature
+   tx 92yzx3mbKFArpVWcfWHW7hv1q8oGqQkKQEofr6kL1Fm9  https://testnet.nearblocks.io/txns/92yzx3mbKFArpVWcfWHW7hv1q8oGqQkKQEofr6kL1Fm9
+b) genuine signature, but score 74 is below the buyer's 80
+   result: REJECTED, quality score below buyer minimum
+   tx GB16nbqJgCTkGHUJ9F3ZA4Qb74fxFJFVrwoJXJAnPTmu  https://testnet.nearblocks.io/txns/GB16nbqJgCTkGHUJ9F3ZA4Qb74fxFJFVrwoJXJAnPTmu
+c) nobody delivers in time, so the buyer takes the budget back
+   waiting about 16 seconds for the deadline
+   result: REFUNDED 0.02 NEAR to buyer.oralys-signal.testnet
+   tx 4XsmTRb27cMrAq6tDfT2j6buBUtTyRrunSnPqqnGq773  https://testnet.nearblocks.io/txns/4XsmTRb27cMrAq6tDfT2j6buBUtTyRrunSnPqqnGq773
+   request #4 status: Refunded
+
+== Summary ==
+transactions: 10, rejected on purpose: 2
+contract: https://testnet.nearblocks.io/address/market.oralys-signal.testnet

@@ -1,0 +1,76 @@
+{
+  "data_label": "SAMPLE DATA",
+  "timestamp": "2026-11-13T00:08:41.407125+00:00",
+  "model": "z-ai/glm-5.3-flash",
+  "signing_algo": "ecdsa",
+  "nonce": "82c74c89176bb3d7a5f68954dee983e75a73b111b37405abcd8d03938a871785",
+  "checks": {
+    "report_fetch": "pass",
+    "model_candidates_present": "pass",
+    "response": "not verified: completion verification unavailable"
+  },
+  "reports": [
+    {
+      "label": "gateway",
+      "signing_algo": "ecdsa",
+      "signing_address": "0xb98a789cdc4817275f5155593ba73ef2a957e779",
+      "model": null,
+      "tcb_status": "UpToDate",
+      "checks": {
+        "dcap_quote_signature_and_collateral": "pass",
+        "signing_algo": "pass",
+        "signing_identity_length": "pass",
+        "request_nonce_echo": "pass",
+        "tcb_status_UpToDate": "pass",
+        "tdx_debug_disabled": "pass",
+        "report_data_binds_signer": "pass",
+        "report_data_binds_nonce": "pass",
+        "http_report_data_equals_quote": "pass",
+        "mrconfigid_matches_app_compose": "pass",
+        "rtmr3_event_log_replay": "pass"
+      },
+      "verified": true
+    },
+    {
+      "label": "model_0",
+      "signing_algo": "ecdsa",
+      "signing_address": "0x3b753b4406613c5e70ae640508632b600424fa0c",
+      "model": "z-ai/glm-5.3-flash",
+      "tcb_status": "UpToDate",
+      "checks": {
+        "dcap_quote_signature_and_collateral": "pass",
+        "signing_algo": "pass",
+        "signing_identity_length": "pass",
+        "request_nonce_echo": "pass",
+        "tcb_status_UpToDate": "pass",
+        "tdx_debug_disabled": "pass",
+        "report_data_binds_signer": "pass",
+        "report_data_binds_nonce": "pass",
+        "mrconfigid_matches_app_compose": "pass",
+        "rtmr3_event_log_replay": "pass",
+        "model_name": "pass",
+        "gpu_nonce": "pass",
+        "gpu_nras_overall_result": "pass"
+      },
+      "verified": true
+    }
+  ],
+  "completion_id": null,
+  "request_sha256": "2ebcc3969cc596dd15ab66ef036a16db1ec44737b26f46f5b8de3d4f1a141599",
+  "response_sha256": null,
+  "signature_kind": null,
+  "overall_verdict": "not verified",
+  "scope": "none",
+  "limitations": [
+    "No TLS binding.",
+    "No measurement allowlist.",
+    "NVIDIA tokens are not locally signature-verified.",
+    "Preflight alone does not verify a completion."
+  ],
+  "require_attestation": true,
+  "raw_reports": {
+    "sha256": "f9b5036b209ea390657df21c96fe5bb95b9346d0a1be441a240a16479efd2bda",
+    "bytes": 321679,
+    "path": "near-ai-attestation-reports/f9b5036b209ea390657df21c96fe5bb95b9346d0a1be441a240a16479efd2bda.json"
+  }
+}

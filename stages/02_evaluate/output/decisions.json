@@ -1,0 +1,76 @@
+{
+  "mode": "model",
+  "model": {
+    "base_url": "https://cloud-api.near.ai/v1",
+    "model": "z-ai/glm-5.3-flash"
+  },
+  "policy": {
+    "_note": "Single home for the buyer agent's numbers. Other files link here instead of repeating them. Values are demo settings, not recommendations.",
+    "budget_near": "0.1",
+    "min_quality": 70,
+    "max_price_near": "0.05",
+    "topics": [
+      "transit-board",
+      "earnings-call",
+      "press-briefing"
+    ],
+    "ttl_seconds": 600
+  },
+  "decisions": [
+    {
+      "signal_id": "sample-001",
+      "buy": true,
+      "reason": "Topic transit-board is allowed, quality 88 meets the 70 bar, price 0.02 is within cap and budget.",
+      "source": "model",
+      "title": "Fictional city transit board meeting, fare discussion",
+      "quality_score": 88,
+      "price_near": "0.02"
+    },
+    {
+      "signal_id": "sample-002",
+      "buy": true,
+      "reason": "Topic earnings-call is allowed, quality 74 meets the bar, price 0.02 fits remaining budget.",
+      "source": "model",
+      "title": "Fictional company quarterly call, guidance section",
+      "quality_score": 74,
+      "price_near": "0.02"
+    },
+    {
+      "signal_id": "sample-003",
+      "buy": false,
+      "reason": "Quality 52 is below min_quality 70, so no request is opened.",
+      "source": "model",
+      "title": "Fictional transit board meeting, partial audio",
+      "quality_score": 52,
+      "price_near": "0.02"
+    },
+    {
+      "signal_id": "sample-004",
+      "buy": true,
+      "reason": "Topic press-briefing is allowed, quality 91 meets the bar, price 0.02 fits remaining budget.",
+      "source": "model",
+      "title": "Fictional agency press briefing, weather response",
+      "quality_score": 91,
+      "price_near": "0.02"
+    },
+    {
+      "signal_id": "sample-005",
+      "buy": false,
+      "reason": "Quality 39 is below min_quality 70, so no request is opened.",
+      "source": "model",
+      "title": "Fictional company call, single phone line",
+      "quality_score": 39,
+      "price_near": "0.02"
+    },
+    {
+      "signal_id": "sample-006",
+      "buy": false,
+      "reason": "Quality 63 is below min_quality 70, so no request is opened.",
+      "source": "model",
+      "title": "Fictional county briefing, road closures",
+      "quality_score": 63,
+      "price_near": "0.02"
+    }
+  ],
+  "require_attestation": true
+}

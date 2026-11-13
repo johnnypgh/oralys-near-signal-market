@@ -1,0 +1,61 @@
+{
+  "notice": "SAMPLE DATA. Every entry below is made up for this hackathon demo. No real transcripts, events, people or Oralys customer data are included.",
+  "feed": "oralys-sample-feed",
+  "schema_version": 1,
+  "signals": [
+    {
+      "signal_id": "sample-001",
+      "label": "SAMPLE DATA",
+      "topic": "transit-board",
+      "title": "Fictional city transit board meeting, fare discussion",
+      "quality_score": 88,
+      "price_near": "0.02",
+      "transcript": "SAMPLE DATA. Chair: Next item is the proposed weekend fare pilot. Member A: Staff should report ridership after three months. Chair: Motion to approve the pilot passes."
+    },
+    {
+      "signal_id": "sample-002",
+      "label": "SAMPLE DATA",
+      "topic": "earnings-call",
+      "title": "Fictional company quarterly call, guidance section",
+      "quality_score": 74,
+      "price_near": "0.02",
+      "transcript": "SAMPLE DATA. CFO: We are keeping our outlook unchanged for the year. Analyst: Can you say more about supply timing? CFO: We expect to share an update next quarter."
+    },
+    {
+      "signal_id": "sample-003",
+      "label": "SAMPLE DATA",
+      "topic": "transit-board",
+      "title": "Fictional transit board meeting, partial audio",
+      "quality_score": 52,
+      "price_near": "0.02",
+      "transcript": "SAMPLE DATA. [inaudible] the budget item [crosstalk] ... we will come back to that ... [inaudible]"
+    },
+    {
+      "signal_id": "sample-004",
+      "label": "SAMPLE DATA",
+      "topic": "press-briefing",
+      "title": "Fictional agency press briefing, weather response",
+      "quality_score": 91,
+      "price_near": "0.02",
+      "transcript": "SAMPLE DATA. Spokesperson: Crews will be staged in the northern districts tonight. Reporter: Will schools open tomorrow? Spokesperson: A decision will be posted by 6 in the morning."
+    },
+    {
+      "signal_id": "sample-005",
+      "label": "SAMPLE DATA",
+      "topic": "earnings-call",
+      "title": "Fictional company call, single phone line",
+      "quality_score": 39,
+      "price_near": "0.02",
+      "transcript": "SAMPLE DATA. Operator: ... line is breaking up ... [inaudible] ... next question please."
+    },
+    {
+      "signal_id": "sample-006",
+      "label": "SAMPLE DATA",
+      "topic": "press-briefing",
+      "title": "Fictional county briefing, road closures",
+      "quality_score": 63,
+      "price_near": "0.02",
+      "transcript": "SAMPLE DATA. Official: Two bridges stay closed until inspection. Reporter: When is the inspection? Official: Later this week."
+    }
+  ]
+}

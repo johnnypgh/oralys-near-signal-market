@@ -1,0 +1,36 @@
+{
+  "name": "oralys-near-signal-market",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Buyer agent, seller oracle and sandbox tests for the Oralys Signal Market NEAR contract",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build:contract": "cd contract && cargo near build non-reproducible-wasm",
+    "test:unit": "cd contract && cargo test",
+    "test:sandbox": "tsx --test integration-tests/market.test.ts",
+    "test:tools": "python3 -I _tools/test_tools.py",
+    "walk": "python3 -I _tools/links.py",
+    "pipeline": "_tools/run_pipeline.sh",
+    "test": "npm run test:unit && npm run build:contract && npm run test:sandbox && npm run test:tools",
+    "demo": "tsx scripts/demo.ts",
+    "typecheck": "tsc --noEmit",
+    "build:contract:v2": "cd contract-v2 && cargo near build non-reproducible-wasm",
+    "test:unit:v2": "cd contract-v2 && cargo test",
+    "test:sandbox:v2": "tsx --test integration-tests/market-v2.test.ts",
+    "test:agent:v2": "tsx --test agent/src/v2/*.test.ts",
+    "demo:v2": "tsx scripts/demo-v2.ts"
+  },
+  "dependencies": {
+    "near-api-js": "^7.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "near-sandbox": "^0.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "network": "sandbox",
+  "note": "SAMPLE DATA run. Seller side is the sample oracle in this repo.",
+  "contract": "market.sandbox",
+  "buyer": "buyer.sandbox",
+  "seller": "seller.sandbox",
+  "signer_public_key": "ed25519:CkLUP92GtRWaJgPwnGLRoRC1bZ1maFt2yFyMrdYkpbd5",
+  "setup_txs": [
+    {
+      "label": "create market.sandbox",
+      "hash": "GtMdGUyjRaJGmGHbDy7Fp4UR2TgtssknNX8hqS4ToY1e"
+    },
+    {
+      "label": "create buyer.sandbox",
+      "hash": "YsftrZgNuSnPXjgWNZRpxQiknLTwUPchyZyMPFjop3g"
+    },
+    {
+      "label": "create seller.sandbox",
+      "hash": "CGcjouR1pXrepLFdgczj5WeEoNsMbRUeGTq7W5kf8yPm"
+    },
+    {
+      "label": "deploy contract to market.sandbox",
+      "hash": "FAEpFfY5xe76okbainuUVWvuyx1npaWGiBHG9LB97xyQ"
+    },
+    {
+      "label": "init market",
+      "hash": "DUeHb2i4FTHvp1u8TvD4L6x9Un5gs8oJQUV4yKjgx3MV"
+    }
+  ],
+  "receipts": [
+    {
+      "signal_id": "sample-001",
+      "request_id": "0",
+      "price_near": "0.02",
+      "status": "Fulfilled",
+      "quality_score_on_chain": 88,
+      "keyed_hash": "77d0969cf2fd364619308c6ff0e45deda17cbc535aa4c5da63842c297d0b96a8",
+      "open_tx": "8ybjjPzA5jxgxbdmYt8KCrBh4ZLRRZxkALoAaZyiHLVj",
+      "fulfill_tx": "25siDt6GDFyhK3VwjffZQYtgxrmvx1nEeAVxqNuyuAz8",
+      "fulfill_error": null,
+      "links": []
+    },
+    {
+      "signal_id": "sample-002",
+      "request_id": "1",
+      "price_near": "0.02",
+      "status": "Fulfilled",
+      "quality_score_on_chain": 74,
+      "keyed_hash": "ee7886581610feb8d4419d687f635571b976d463582801ff5a3a2a399719380b",
+      "open_tx": "BF61yqGZDKqRG57zRVrHtZfnreG41Xyu89BEqaXUXav5",
+      "fulfill_tx": "EtibDUgeCWeeZ7BGkWnaup8HELXZVKJP6U5aYKY4k7MK",
+      "fulfill_error": null,
+      "links": []
+    },
+    {
+      "signal_id": "sample-004",
+      "request_id": "2",
+      "price_near": "0.02",
+      "status": "Fulfilled",
+      "quality_score_on_chain": 91,
+      "keyed_hash": "692c6e45b1cd62c8647e5ea34acbc60cdf7b6f7b3748c7962a8875a38cf828a9",
+      "open_tx": "4K7BJoKUFues3bmm6gn532u3bN2Uqfg6g8PjGHToX91f",
+      "fulfill_tx": "9NiKGvLSkKhGQoDzAn7z6EfiUW9T9Kk9L8JLvEvjZQAY",
+      "fulfill_error": null,
+      "links": []
+    }
+  ]
+}

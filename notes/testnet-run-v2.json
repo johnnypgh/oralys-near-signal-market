@@ -1,0 +1,144 @@
+{
+  "network": "testnet",
+  "run_at_et": "Fri Nov 13, 2026, 12:19 AM ET",
+  "data": "SAMPLE DATA (sample-data/keyword-feed.json, replayed with anchor now minus 300 s)",
+  "market": "market2.oralys-signal.testnet",
+  "owner": "oralys-signal.testnet",
+  "buyer": "buyer.oralys-signal.testnet",
+  "seller": "seller.oralys-signal.testnet",
+  "signer_public_key": "ed25519:9vZoLXg1rh1XH3CtrhL4RD8ZS5dpavb2nN6TwY9NTf7z",
+  "code_hash_bs58": "GkDfZJkTx3EqgVpfUWLYYBadvenGi3Fx6biYJetfsxzQ",
+  "wasm_sha256_hex": "e9f1994a838af18a87d896300fb1768f175b00e69a686f842345021f255fbd8d",
+  "request": {
+    "query": "NVIDIA OR (Clarity AND Act)",
+    "window_seconds": 3600,
+    "price_per_excerpt_near": "0.01",
+    "deposit_near": "0.05",
+    "min_quality": 70
+  },
+  "final_state_read_back": {
+    "request_0": {
+      "status": "Exhausted",
+      "spent_near": "0.05",
+      "paid_count": 5
+    },
+    "request_1": {
+      "status": "Refunded",
+      "spent_near": "0.01",
+      "paid_count": 1,
+      "refunded_near": "0.04"
+    }
+  },
+  "setup_txs": [
+    {
+      "step": "create market2.oralys-signal.testnet, funded 2.3 NEAR from oralys-signal.testnet",
+      "hash": "7umU63b9qN4RR9hu1mBqj6SmEe3AfGCGqwyZcrKfHX6X",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/7umU63b9qN4RR9hu1mBqj6SmEe3AfGCGqwyZcrKfHX6X"
+    },
+    {
+      "step": "deploy contract-v2 wasm and init new(owner, seller, signer)",
+      "hash": "ESvfnuxWY1ytpJ69WQpW1eHRt55eRcLsRVZPojXroZHz",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/ESvfnuxWY1ytpJ69WQpW1eHRt55eRcLsRVZPojXroZHz"
+    }
+  ],
+  "txs": [
+    {
+      "step": "Open request with 600 second deadline",
+      "hash": "BvYm3SQQ7z7t9qQn1jMV2u84FXSCTGePrKp2RwdFYZ3n",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/BvYm3SQQ7z7t9qQn1jMV2u84FXSCTGePrKp2RwdFYZ3n",
+      "at": "2026-11-13T05:19:38.312Z"
+    },
+    {
+      "step": "Forged signature",
+      "hash": "DTdGpbrvf3EZT4LoSuaSsG22emrhUwqMTZx8EsQK3hiz",
+      "ok": false,
+      "error": "invalid signature",
+      "link": "https://testnet.nearblocks.io/txns/DTdGpbrvf3EZT4LoSuaSsG22emrhUwqMTZx8EsQK3hiz",
+      "at": "2026-11-13T05:19:42.494Z"
+    },
+    {
+      "step": "Out of window",
+      "hash": "AmkxihxGkBq73GXgx6VTRAg23KCs5qNr23fsadg4FYhC",
+      "ok": false,
+      "error": "recorded_at is outside the request window",
+      "link": "https://testnet.nearblocks.io/txns/AmkxihxGkBq73GXgx6VTRAg23KCs5qNr23fsadg4FYhC",
+      "at": "2026-11-13T05:19:46.362Z"
+    },
+    {
+      "step": "Low quality",
+      "hash": "J4z6zvoeJpZrKzoqBaa9D9TAasJw1xKRLiMVVoKeoetz",
+      "ok": false,
+      "error": "quality score below buyer minimum",
+      "link": "https://testnet.nearblocks.io/txns/J4z6zvoeJpZrKzoqBaa9D9TAasJw1xKRLiMVVoKeoetz",
+      "at": "2026-11-13T05:19:49.824Z"
+    },
+    {
+      "step": "Pay sd-r1-02-s2",
+      "hash": "9jTJ1gokyGXEDn5Zgzi9RgjzEdVsc777tjKUQo25Vpbr",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/9jTJ1gokyGXEDn5Zgzi9RgjzEdVsc777tjKUQo25Vpbr",
+      "at": "2026-11-13T05:19:54.018Z"
+    },
+    {
+      "step": "Double pay",
+      "hash": "HRnpHwtwpmneRV8cvGiEq9iVUsNT3f3XQz69iZpiMMtm",
+      "ok": false,
+      "error": "excerpt already paid for this request",
+      "link": "https://testnet.nearblocks.io/txns/HRnpHwtwpmneRV8cvGiEq9iVUsNT3f3XQz69iZpiMMtm",
+      "at": "2026-11-13T05:19:57.169Z"
+    },
+    {
+      "step": "Pay sd-r2-01-s2",
+      "hash": "96HrNvRgJgNWDduhrx5YbWW2nCP32MDTBSifz38igcev",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/96HrNvRgJgNWDduhrx5YbWW2nCP32MDTBSifz38igcev",
+      "at": "2026-11-13T05:20:01.355Z"
+    },
+    {
+      "step": "Pay sd-r3-02-s2",
+      "hash": "6w56ePCpRSq3HzyjvLfUoMoGkuygFp68Vp2zDkmTx5CM",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/6w56ePCpRSq3HzyjvLfUoMoGkuygFp68Vp2zDkmTx5CM",
+      "at": "2026-11-13T05:20:04.965Z"
+    },
+    {
+      "step": "Pay sd-r3-02-s5",
+      "hash": "Hpd3gJyjcutjkatFQavyhCfn3pCAK5KXEvy9DVQvkU76",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/Hpd3gJyjcutjkatFQavyhCfn3pCAK5KXEvy9DVQvkU76",
+      "at": "2026-11-13T05:20:08.843Z"
+    },
+    {
+      "step": "Pay sd-r4-01-s1",
+      "hash": "289gEUdBLsDko6mdapwJukEC28equ2tMnZ8zqQcikvT4",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/289gEUdBLsDko6mdapwJukEC28equ2tMnZ8zqQcikvT4",
+      "at": "2026-11-13T05:20:13.661Z"
+    },
+    {
+      "step": "Open request with 20 second deadline",
+      "hash": "9Zk1iX78QMsHkao7RUeJSXRPruM8BEHbYNryj5iypic7",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/9Zk1iX78QMsHkao7RUeJSXRPruM8BEHbYNryj5iypic7",
+      "at": "2026-11-13T05:20:17.660Z"
+    },
+    {
+      "step": "Pay one excerpt on short request",
+      "hash": "HskNotrmzzdFzzxermuEmocaZQdMJYQVW7P2DRaZgHaL",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/HskNotrmzzdFzzxermuEmocaZQdMJYQVW7P2DRaZgHaL",
+      "at": "2026-11-13T05:20:21.807Z"
+    },
+    {
+      "step": "Refund after deadline",
+      "hash": "CEs5omy2JXD7ysXp8ocTQ266BvUusc9c22WLSYm6dWFo",
+      "ok": true,
+      "link": "https://testnet.nearblocks.io/txns/CEs5omy2JXD7ysXp8ocTQ266BvUusc9c22WLSYm6dWFo",
+      "at": "2026-11-13T05:20:44.567Z"
+    }
+  ],
+  "explorer_account": "https://testnet.nearblocks.io/address/market2.oralys-signal.testnet"
+}

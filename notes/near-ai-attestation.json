@@ -1,0 +1,82 @@
+{
+  "data_label": "SAMPLE DATA",
+  "timestamp": "2026-11-13T00:12:26.860041+00:00",
+  "model": "z-ai/glm-5.3-flash",
+  "signing_algo": "ecdsa",
+  "nonce": "85ad4e9f1a597e036aa737c862b01d4ecfa1b852e525234720c984257a8e5ac5",
+  "checks": {
+    "report_fetch": "pass",
+    "model_candidates_present": "pass",
+    "preflight": "pass",
+    "signature_available": "pass",
+    "signature_kind": "pass",
+    "signature_algo": "pass",
+    "signed_text": "pass",
+    "exactly_one_preflight_signer": "pass",
+    "signature_crypto": "pass"
+  },
+  "reports": [
+    {
+      "label": "gateway",
+      "signing_algo": "ecdsa",
+      "signing_address": "0xb98a789cdc4817275f5155593ba73ef2a957e779",
+      "model": null,
+      "tcb_status": "UpToDate",
+      "checks": {
+        "dcap_quote_signature_and_collateral": "pass",
+        "signing_algo": "pass",
+        "signing_identity_length": "pass",
+        "request_nonce_echo": "pass",
+        "tcb_status_UpToDate": "pass",
+        "tdx_debug_disabled": "pass",
+        "report_data_binds_signer": "pass",
+        "report_data_binds_nonce": "pass",
+        "http_report_data_equals_quote": "pass",
+        "mrconfigid_matches_app_compose": "pass",
+        "rtmr3_event_log_replay": "pass"
+      },
+      "verified": true
+    },
+    {
+      "label": "model_0",
+      "signing_algo": "ecdsa",
+      "signing_address": "0x3b753b4406613c5e70ae640508632b600424fa0c",
+      "model": "z-ai/glm-5.3-flash",
+      "tcb_status": "UpToDate",
+      "checks": {
+        "dcap_quote_signature_and_collateral": "pass",
+        "signing_algo": "pass",
+        "signing_identity_length": "pass",
+        "request_nonce_echo": "pass",
+        "tcb_status_UpToDate": "pass",
+        "tdx_debug_disabled": "pass",
+        "report_data_binds_signer": "pass",
+        "report_data_binds_nonce": "pass",
+        "mrconfigid_matches_app_compose": "pass",
+        "rtmr3_event_log_replay": "pass",
+        "model_name": "pass",
+        "gpu_nonce": "pass",
+        "gpu_nras_overall_result": "pass"
+      },
+      "verified": true
+    }
+  ],
+  "completion_id": "dfba4117364049a983056dc43808420f",
+  "request_sha256": "2ebcc3969cc596dd15ab66ef036a16db1ec44737b26f46f5b8de3d4f1a141599",
+  "response_sha256": "d65e896e4b3098011274aef7a65a52b4078002689f041afa4b28c599c800da17",
+  "signature_kind": "provider_tee",
+  "overall_verdict": "verified",
+  "scope": "provider_tee",
+  "limitations": [
+    "No TLS binding.",
+    "No measurement allowlist.",
+    "NVIDIA tokens are not locally signature-verified.",
+    "Preflight alone does not verify a completion."
+  ],
+  "require_attestation": true,
+  "raw_reports": {
+    "sha256": "bd5c36c3dc2c563bc1571ff397fc3e12aad4a0813972c1bf7dfef84a85258c23",
+    "bytes": 321675,
+    "path": "near-ai-attestation-reports/bd5c36c3dc2c563bc1571ff397fc3e12aad4a0813972c1bf7dfef84a85258c23.json"
+  }
+}

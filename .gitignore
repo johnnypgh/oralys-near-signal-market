@@ -1,0 +1,19 @@
+# build output
+target/
+contract/target/
+*.wasm
+!contract/res/.gitkeep
+# node
+node_modules/
+dist/
+# keys and secrets (never commit)
+.keys/
+*.key
+*.key.json
+.env
+.env.*
+**/neardev/
+.near-credentials/
+# python
+__pycache__/
+*.pyc
