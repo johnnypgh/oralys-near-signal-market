@@ -6,7 +6,7 @@ Oralys is the world's digital clerk. Every day, conferences, events, hearings, a
 
 Recorder compensation in tokens happens off-contract and is not part of this demo. The contract pays the seller account and stops there.
 
-Oralys Signal Market is the pay-per-signal escrow contract plus a buyer agent that pays for SAMPLE DATA transcript signals. Oralys gathers signal in real time, when it matters. NEAR is Oralys's home chain. Built during the hackathon window for the Agent Economy, Open Innovation and Privacy tracks. The Oralys app, which includes the audio recording, splicing, and transcript quality algorithm, is not part of this repo.
+Oralys Signal Market is the pay-per-signal escrow contract plus a buyer agent that pays for access to a transcript. Oralys gathers signal in real time, when it matters. NEAR is Oralys's home chain. Built during the hackathon window for the Agent Economy, Open Innovation and Privacy tracks. The Oralys app, which includes the audio recording, splicing, and transcript quality algorithm, is not part of this repo.
 
 ## How NEAR fits
 
