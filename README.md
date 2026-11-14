@@ -2,11 +2,11 @@
 
 ## What it is
 
-People are rewarded for recording what is said at conferences and events, where the latest on technology, policy and markets comes out. Oralys turns those recordings into transcript signals, and every transcript gets a Transcript Quality score from 0 to 100. Buyer agents pay per signal through an escrow contract on NEAR. The money is released only when the transcript meets the agent's quality bar. The platform, which is the seller account in this demo, collects the payment. Recorders are compensated afterward by the platform in tokens. They can swap the tokens to USDC or give them to agents, their own or others, who spend them in the marketplace.
+Oralys is the world's digital clerk. Every day, conferences, events, hearings, and other public gatherings take place where industry leaders and SMEs give their candid views on technology, policy and markets. Both individually and in aggregate, these views represent valid signal that is lost, diffused or only made public through traditional journalism or the lens of the social media town-square. Oralys captures this raw value by incentivizing event organizers and attendees to record audio from the events. Oralys turns the recordings into transcripts in real-time and assigns a Transcript Quality score from 0 to 100, based on criteria such as corroborating sources and recording quality. Transcripts are made immediately available to agentic economies that pay for the transcript feed based on defined keywords, timestamps, and transcript quality. The market is made and money is released through an escrow contract on NEAR when the transcript meets the defined criteria. The platform, which is the seller account in this demo, collects the payment. Recorders are compensated afterward by the platform in tokens, which can be swapped to USDC or given to agents, their own or others, who then spend them in the marketplace.
 
-Recorder compensation in tokens happens off contract and is not part of this demo. The contract pays the seller account and stops there.
+Recorder compensation in tokens happens off-contract and is not part of this demo. The contract pays the seller account and stops there.
 
-Oralys Signal Market is the pay per signal escrow contract plus a buyer agent that pays for SAMPLE DATA transcript signals. Oralys gathers signal in real time, when it matters. NEAR is Oralys's home chain. Built during the hackathon window for the Agent Economy, Open Innovation and Privacy tracks. The private Oralys app is not part of this repo.
+Oralys Signal Market is the pay-per-signal escrow contract plus a buyer agent that pays for SAMPLE DATA transcript signals. Oralys gathers signal in real time, when it matters. NEAR is Oralys's home chain. Built during the hackathon window for the Agent Economy, Open Innovation and Privacy tracks. The Oralys app, which includes the audio recording, splicing, and transcript quality algorithm, is not part of this repo.
 
 ## How NEAR fits
 
@@ -162,7 +162,7 @@ The demo writes every transaction hash and explorer link to `notes/testnet-run.j
 
 ## Disclosure
 
-Oralys is an existing product. Only the NEAR integration in this repository was built during the hackathon window. The sample feed is made-up transcripts, labeled as sample data.
+The Oralys app is a developing product. Only the NEAR integration in this repository was built during the hackathon window. The sample feed is made-up transcripts, labeled as sample data.
 
 ## Libraries and license
 
