@@ -162,9 +162,7 @@ The demo writes every transaction hash and explorer link to `notes/testnet-run.j
 
 ## Disclosure
 
-Disclosure: Oralys is an existing product. This repository contains only the NEAR piece built for NEAR HACKATHON between the Oct 19, 2026 announcement and the Nov 14, 2026 deadline: the pay-per-signal contract on NEAR testnet, the TypeScript buyer agent, the seller oracle, the sample feed, the demo scripts and the tests. The sample feed is made-up transcripts, labeled as sample data. No real recordings or real users are included.
-
-AI-written code: the code in this repository was written by AI coding agents and reviewed by the team. That includes the contracts, buyer agent, seller oracle, ICM tools, tests, demo scripts and the v2 keyword work. Some of the README, the Intents notes, the sandbox double fulfill test, `_tools/attest.py` and the stage 02 model path were written with OpenClaw and then reviewed by the team.
+Oralys is an existing product. Only the NEAR integration in this repository was built during the hackathon window. The sample feed is made-up transcripts, labeled as sample data.
 
 ## Libraries and license
 
@@ -176,6 +174,7 @@ AI-written code: the code in this repository was written by AI coding agents and
 - TypeScript
 - Python standard library
 - dcap-qvl, eth-account and PyNaCl (optional, attestation checks only)
+- AI coding tools
 
 License: PolyForm Noncommercial License 1.0.0. See [LICENSE](LICENSE).
 
