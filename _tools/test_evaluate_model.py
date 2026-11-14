@@ -552,7 +552,7 @@ if __name__ == "__main__":
 
 
 class ReviewFixTests(unittest.TestCase):
-    """Bob review fixes, Nov 12 2026."""
+    """Key redaction and attestation override checks, Nov 12 2026."""
 
     def test_raw_report_keeps_upstream_words_but_drops_key(self):
         key = "sk-FAKE-LEAKCHECK-0000"

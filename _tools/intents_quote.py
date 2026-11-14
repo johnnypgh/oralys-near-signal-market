@@ -3,7 +3,7 @@
 
 DRY ONLY. The request always sends "dry": true, so 1Click returns pricing but no deposit address.
 Nothing is signed, nothing is deposited, nothing is spent. NEAR Intents has no testnet, so this
-stage never goes further than a quote unless John approves mainnet separately.
+stage never goes further than a quote. Signing, depositing or executing a swap is out of scope.
 
 Usage: python3 -I _tools/intents_quote.py [--amount-usdc 1] [--check]
 Env (optional): INTENTS_RECIPIENT (NEAR account to receive), INTENTS_REFUND_TO (EVM address on the origin chain)

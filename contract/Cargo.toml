@@ -3,7 +3,7 @@ name = "oralys-signal-market"
 version = "0.1.0"
 edition = "2021"
 description = "Pay-per-signal market on NEAR: buyer agents pay for signed transcript quality signals"
-license = "MIT"
+license = "PolyForm-Noncommercial-1.0.0"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

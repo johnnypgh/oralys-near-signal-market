@@ -1,11 +1,11 @@
-# SPEC: Oralys Signal Market (handoff for the next coding agent)
+# SPEC: Oralys Signal Market
 
-Status as of Thu Nov 12, 2026, about 7:20 PM ET (OpenClaw sessions 1 and 2 merged, verified NEAR AI Cloud run). Local repo only, no remote. Branch `main`.
+v1 technical specification for the pay-per-signal escrow contract and buyer agent.
 
 ## 1. Goal and track
-NEAR hackathon (https://nearhackathon.com/), tracks Agent Economy (`agents`) plus Open Innovation (`open`), John's decision relayed by Beans at 6:00 PM ET. Deadline Sat Nov 14, 6:59 PM ET; aim for code complete Fri midday ET.
+NEAR hackathon (https://nearhackathon.com/), tracks Agent Economy (`agents`) plus Open Innovation (`open`). Deadline Sat Nov 14, 6:59 PM ET.
 Build only the NEAR piece: a pay-per-signal escrow contract plus a buyer agent that pays for SAMPLE DATA transcript signals from Oralys,
-a live-signal transcript data service whose home chain is NEAR (owner decision, Nov 12 6:01 PM ET). Project name: Oralys Signal Market. The Oralys app itself stays private and is not in this repo.
+a live-signal transcript data service whose home chain is NEAR. Project name: Oralys Signal Market. The Oralys app itself stays private and is not in this repo.
 
 ## 2. Hard rules
 - Testnet or local sandbox only. No mainnet, no real money, no Intents execution (dry quotes only).
@@ -13,9 +13,9 @@ a live-signal transcript data service whose home chain is NEAR (owner decision, 
 - All demo data is made up and labeled SAMPLE DATA (`_shared/sample-data-rules.md`). No private Oralys code or data.
 - Present NEAR as Oralys's home chain. Do not mention Base anywhere in the README or docs, except as a cross-chain payment origin in the Intents quote example.
 - No em dashes or en dashes anywhere. Plain wording, no invented figures (`_shared/copy-rules.md`).
-- No git push until John's final OK. The GitHub repo `johnnypgh/oralys-near-signal-market` is public but still empty. X post is draft only, John posts it.
+- Do not commit secrets. `.keys/` and `~/.near-credentials` stay out of the tree.
 
-## 3. What's done (final state, Nov 12, 2026, about 6:25 PM ET)
+## 3. Implemented state (Nov 12, 2026)
 | Path | What | Status |
 | --- | --- | --- |
 | `contract/src/lib.rs` | Escrow contract, near-sdk 5.30, Rust stable 1.100, built with cargo-near 0.23 | builds; wasm sha256 bs58 `ACVxqCa67pvtCnBrvJzgFWndXbNQ8tF1zoVRgQSpKBFC` |
@@ -39,22 +39,16 @@ Testnet state:
 - Final run, Nov 12, 6:14 PM ET: 10 txs, all hashes in `notes/testnet-run.json` and links in README: 4 opens (#1 to #4), 3 paid fulfills, 2 deliberate rejections (forged signature, score below minimum), 1 refund after deadline. The 3 low-score skips happen off chain in the buyer agent.
 - Account creation tx: `8nVsDh5R6e1r6PkT5SYaBnLPoHfVKabhDxCjnQT5Cz7C`.
 
-### Update, Nov 12, 2026, about 6:20 PM ET (after OpenClaw session 1 merge)
-- README.md, notes/intents-testnet.md and the sandbox double fulfill test are merged. Walk test passes (55 paths). Fresh run: 18 unit, 9 sandbox, 6 tools tests passed, tsc clean (`notes/test-run-2026-11-12.txt`).
-- Final testnet demo ran Nov 12, 6:14 PM ET: 10 txs, requests #1 to #4, 2 deliberate rejections, 1 refund. No redeploy needed (code hash matched). Hashes in `notes/testnet-run.json`, links in README. Items 1 to 3 below are done.
-
-### Update, Nov 12, 2026, about 7:05 PM ET (after OpenClaw session 2 merge)
-- Added `_tools/attest.py`, the stage 02 attestation preflight and response signature check, fixtures and offline tests. Review fixes by Bob: raw attestation reports get exact key redaction only (so they still verify), and `--require-attestation` refuses a base URL or model override.
+Attestation and model path:
+- Added `_tools/attest.py`, the stage 02 attestation preflight and response signature check, fixtures and offline tests. Raw attestation reports get exact key redaction only (so they still verify), and `--require-attestation` refuses a base URL or model override.
+- README.md, notes/intents-testnet.md and the sandbox double fulfill test are in the tree. A recorded walk test passed (55 paths). A recorded run: 18 unit, 9 sandbox, 6 tools tests passed, tsc clean (`notes/test-run-2026-11-12.txt`).
 - NEAR AI Cloud attestation for z-ai/glm-5.3-flash: preflight checks verified on the box without a key (Nov 12, 6:55 PM ET), gateway and model reports.
-- Keyed completions, 3 runs. Run 1, Nov 12, 6:55 PM ET: HTTP 401, the tools read `NEAR_API_KEY`, which held the NEAR Builders key. Run 2, 7:08 PM ET: HTTP error, no reply, status not recorded (the tool now logs it). Run 3, 7:12 PM ET, `--require-attestation`: verified. provider_tee signature, ecdsa, signed text matches the exact request and response hashes, signer `0x3b753b4406613c5e70ae640508632b600424fa0c` matches exactly one verified model report, crypto check passed. Stage 02 output is `mode: model`, same buys as rules. Stage 04 report regenerated; settlement receipts are from the earlier sandbox run. The tools read `NEAR_AI_CLOUD_API_KEY` only and record HTTP status and error type of a failed completion. Record: `notes/near-ai-run.md`.
+- Keyed completions, 3 runs. Run 1, Nov 12, 6:55 PM ET: HTTP 401, the tools read `NEAR_API_KEY`, which held a NEAR Builders key. Run 2, 7:08 PM ET: HTTP error, no reply, status not recorded (the tool now logs it). Run 3, 7:12 PM ET, `--require-attestation`: verified. provider_tee signature, ecdsa, signed text matches the exact request and response hashes, signer `0x3b753b4406613c5e70ae640508632b600424fa0c` matches exactly one verified model report, crypto check passed. Stage 02 output is `mode: model`, same buys as rules. Stage 04 report regenerated; settlement receipts are from the earlier sandbox run. The tools read `NEAR_AI_CLOUD_API_KEY` only and record HTTP status and error type of a failed completion. Record: `notes/near-ai-run.md`.
 
-## 4. What's left (smallest first)
-1. Write `notes/intents-testnet.md` from section 9 below, and `README.md` (what it is, track, built during window, run tests/demo, testnet deploy, OpenClaw and Hermes on NEAR AI Cloud, Intents dry quote only, link to https://github.com/RinDig/icm-architect (MIT) by link only). Then `python3 -I _tools/links.py` must pass.
-2. Add a sandbox test for double fulfill (unit test exists, sandbox case missing).
-3. Re-run `scripts/demo.sh testnet` with `NEAR_ACCOUNT_ID=oralys-signal.testnet` (only with fresh approval; it reuses existing accounts and redeploys) and paste tx links from `demo-output/demo-testnet-txs.json` into README.
-4. Run `_tools/run_pipeline.sh testnet` and commit stage outputs from that run.
-5. Known gaps, optional: buyer does not pay storage for its request record (contract balance covers it); payout transfer has no callback if the seller account vanished; one signer per contract.
-6. Submission items (section 12).
+## 4. Known limits
+- Buyers do not pay storage for their request records. The contract balance covers it.
+- Payout transfers have no callback if the seller account vanished.
+- One signer per contract.
 
 ## 5. Contract interface (`contract/src/lib.rs`)
 Types: `U64`/`U128` are JSON strings. `PublicKey` is `"ed25519:<base58>"`. Status enum: `"Open" | "Fulfilled" | "Refunded"`.
@@ -88,7 +82,7 @@ The contract does, not just the agent. `open_request` stores `min_quality` (0 to
 
 ## 7. Test plan
 Unit (`cd contract && cargo test`, all exist and pass): escrow and event on open; valid fulfill pays; score equal to min accepted; wrong key rejected; tampered score rejected; signature for another request rejected; score below min rejected; fulfill after deadline rejected; double fulfill rejected; bad hash rejected; refund after deadline; refund before deadline rejected; refund after fulfill rejected; open without deposit rejected; min_quality 101 rejected; set_signer owner only; rotated signer used; views paginate.
-Sandbox (`npm run test:sandbox`, all exist and pass): config; signing message matches contract; success pays seller (balance delta = price minus gas); forged key rejected and escrow stays Open; tampered score rejected; score below min rejected and stays Open; refund after deadline (early refund rejected, late fulfill rejected, buyer balance up, status Refunded); agent skips low scores. TODO: double fulfill in sandbox.
+Sandbox (`npm run test:sandbox`, all exist and pass): config; signing message matches contract; success pays seller (balance delta = price minus gas); forged key rejected and escrow stays Open; tampered score rejected; score below min rejected and stays Open; refund after deadline (early refund rejected, late fulfill rejected, buyer balance up, status Refunded); agent skips low scores. Double fulfill is covered in the sandbox tests.
 Tools (`python3 -I _tools/test_tools.py`): rules, budget cap, guard overrides a model buy the rules forbid, guard fills missing answers, model may skip, quote request always dry. The same command also runs `test_attest.py` and `test_evaluate_model.py` (attestation fixtures, signature binding, fallback labels, fake key leak test); 2 live network tests are skipped offline.
 
 ## 8. ICM workspace
@@ -120,7 +114,7 @@ All at once: `_tools/run_pipeline.sh [sandbox|testnet]` (set `SKIP_INTENTS_QUOTE
 ## 11. Testnet deploy steps (placeholders)
 ```
 cd contract && cargo near build non-reproducible-wasm && cd ..
-# account already exists: oralys-signal.testnet. For a new one (needs approval):
+# account already exists: oralys-signal.testnet. For a new one:
 # near account create-account sponsor-by-faucet-service <ACCOUNT>.testnet autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 NEAR_ACCOUNT_ID=<ACCOUNT>.testnet scripts/demo.sh testnet          # creates/reuses market., buyer., seller. sub-accounts, deploys, runs
 NEAR_ACCOUNT_ID=<ACCOUNT>.testnet _tools/run_pipeline.sh testnet  # ICM run against the deployed contract
@@ -134,13 +128,3 @@ Explorer: `https://testnet.nearblocks.io/address/market.<ACCOUNT>.testnet`.
 - The box also has a distro Rust at `/usr/bin/rustc` and `/usr/bin/cargo` (1.85.1). It cannot build this project. Put `~/.cargo/bin` first on PATH so rustup's `cargo` is used. The rustup default was 1.81.0 by mistake and is now `stable`; the pin above makes the default irrelevant inside `contract/`.
 - Build tools: cargo-near 0.23.0 (`cargo near build non-reproducible-wasm`, which runs wasm-opt and embeds the ABI), near-cli-rs 0.31.1, Node v24.22.1, Python 3.13.5. Wasm target: `wasm32-unknown-unknown` on the stable toolchain.
 - Wasm built with Rust 1.87 or newer uses bulk-memory opcodes. That needs NEAR protocol 84 or later. near-sdk 5.30 declares this, and testnet and near-sandbox 2.14.0 accept it (the contract is deployed on testnet).
-
-## 13. Submission checklist
-- [x] Walk test passes; README written; all tests re-run and outputs pasted
-- [x] Testnet demo tx links in README
-- [x] Public repo `johnnypgh/oralys-near-signal-market` created (public, empty)
-- [ ] Push after John's final OK, as one squashed commit (no secrets: `.keys/` and `~/.near-credentials` never in tree)
-- [x] LICENSE file (MIT, Copyright (c) 2026 John Goldschmidt)
-- [ ] NEAR wallet address for the prize: pending from John
-- [ ] X demo post: drafted only, John posts
-- [ ] Submit per https://nearhackathon.com/HACKATHON.md, tracks `agents` and `open`, John confirms before submit

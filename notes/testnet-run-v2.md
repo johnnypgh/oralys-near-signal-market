@@ -1,6 +1,6 @@
 # v2 testnet run (keyword requests)
 
-Fri Nov 13, 2026, 12:19 AM ET. Testnet only. SAMPLE DATA only. Run by Bob on the box with `scripts/demo-v2.ts --network testnet`.
+Fri Nov 13, 2026, 12:19 AM ET. Testnet only. SAMPLE DATA only. Run on the box with `scripts/demo-v2.ts --network testnet`.
 
 - Contract: `market2.oralys-signal.testnet` (https://testnet.nearblocks.io/address/market2.oralys-signal.testnet), code hash `GkDfZJkTx3EqgVpfUWLYYBadvenGi3Fx6biYJetfsxzQ`
 - Owner `oralys-signal.testnet`, seller `seller.oralys-signal.testnet`, buyer `buyer.oralys-signal.testnet`, oracle signer `ed25519:9vZoLXg1rh1XH3CtrhL4RD8ZS5dpavb2nN6TwY9NTf7z`

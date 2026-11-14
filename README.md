@@ -100,13 +100,13 @@ SKIP_INTENTS_QUOTE=1 _tools/run_pipeline.sh sandbox
 
 ### Testnet deployment
 
-These commands are for an approved operator run outside OpenClaw. A testnet demo run needs approval. It redeploys the contract only when the code on chain differs from the local build. Replace `<ACCOUNT>` with the account name before running.
+These commands are for an operator run outside OpenClaw. A testnet demo run submits transactions. It redeploys the contract only when the code on chain differs from the local build. Replace `<ACCOUNT>` with the account name before running.
 
 ```sh
 cd contract && cargo near build non-reproducible-wasm && cd ..
 ```
 
-The existing root account is `oralys-signal.testnet`. Creating a new account requires approval:
+The existing root account is `oralys-signal.testnet`. Creating a new account uses the testnet faucet and should be done only when a new account is needed:
 
 ```sh
 near account create-account sponsor-by-faucet-service '<ACCOUNT>.testnet' autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
@@ -164,7 +164,7 @@ The demo writes every transaction hash and explorer link to `notes/testnet-run.j
 
 Disclosure: Oralys is an existing product. This repository contains only the NEAR piece built for NEAR HACKATHON between the Oct 19, 2026 announcement and the Nov 14, 2026 deadline: the pay-per-signal contract on NEAR testnet, the TypeScript buyer agent, the seller oracle, the sample feed, the demo scripts and the tests. The sample feed is made-up transcripts, labeled as sample data. No real recordings or real users are included.
 
-AI-written code: the code in this repository was written by AI coding agents and reviewed by the team. The contract, buyer agent, seller oracle, ICM tools, tests and demo scripts were written by Bob, a Grok Bot agent. The README, the Intents notes, the sandbox double fulfill test, `_tools/attest.py` and the stage 02 model path were written with OpenClaw and reviewed by Bob. The v2 keyword contract, agent code, tests and demo were written with OpenClaw from Bob's spec and reviewed by Bob, who also ran the testnet deploy and demo.
+AI-written code: the code in this repository was written by AI coding agents and reviewed by the team. That includes the contracts, buyer agent, seller oracle, ICM tools, tests, demo scripts and the v2 keyword work. Some of the README, the Intents notes, the sandbox double fulfill test, `_tools/attest.py` and the stage 02 model path were written with OpenClaw and then reviewed by the team.
 
 ## Libraries and license
 
@@ -177,7 +177,7 @@ AI-written code: the code in this repository was written by AI coding agents and
 - Python standard library
 - dcap-qvl, eth-account and PyNaCl (optional, attestation checks only)
 
-License: MIT.
+License: PolyForm Noncommercial License 1.0.0. See [LICENSE](LICENSE).
 
 ## v2: keyword requests
 
@@ -191,7 +191,7 @@ Tracks: Agent Economy, Open Innovation and Privacy.
 
 Prize account: johnnyg.near
 
-### DEFAULTS (pending John's answers)
+### Defaults
 
 - Queries support AND, OR, parentheses and quoted phrases. Operators are case insensitive. No NOT, wildcards, commas or adjacent terms without an operator.
 - Each request sets a fixed price per excerpt. The demo pays 0.01 NEAR; the minimum is 0.001 NEAR. The deposit is the total budget cap.
@@ -219,7 +219,7 @@ The sandbox uses throwaway keys in memory. Build the v2 wasm first. The demo rep
 
 ### v2 testnet operator run
 
-Bob runs this outside OpenClaw after review. The v2 script never creates testnet accounts, deploys a contract or creates oracle keys. It uses the existing deployment named by `MARKET2_ID`, default `market2.oralys-signal.testnet`, and checks its registered seller and oracle public key. Pass existing NEAR CLI JSON account files and an existing v2 oracle JSON file by path; do not paste key contents into commands or logs.
+The operator runs this outside OpenClaw. The v2 script never creates testnet accounts, deploys a contract or creates oracle keys. It uses the existing deployment named by `MARKET2_ID`, default `market2.oralys-signal.testnet`, and checks its registered seller and oracle public key. Pass existing NEAR CLI JSON account files and an existing v2 oracle JSON file by path; do not paste key contents into commands or logs.
 
 ```sh
 npx tsx scripts/demo-v2.ts --network testnet --buyer-key <existing-buyer-file> --seller-key <existing-seller-file> --oracle-key <existing-v2-oracle-file>
@@ -229,7 +229,7 @@ The testnet run submits payments and refund transactions using those existing ac
 
 ### v2 testnet run
 
-Run Fri Nov 13, 2026, 12:19 AM ET by Bob on testnet, SAMPLE DATA only. Contract [market2.oralys-signal.testnet](https://testnet.nearblocks.io/address/market2.oralys-signal.testnet), code hash `GkDfZJkTx3EqgVpfUWLYYBadvenGi3Fx6biYJetfsxzQ`, seller `seller.oralys-signal.testnet`, buyer `buyer.oralys-signal.testnet`. Request `NVIDIA OR (Clarity AND Act)`, window 3600 seconds, 0.01 NEAR per excerpt, 0.05 NEAR deposit, quality minimum 70. Read back from the contract after the run: request 0 is Exhausted with 5 excerpts paid and 0.05 NEAR spent; request 1 is Refunded with 1 excerpt paid and 0.04 NEAR returned to the buyer. Record: [notes/testnet-run-v2.md](notes/testnet-run-v2.md).
+Run Fri Nov 13, 2026, 12:19 AM ET on testnet, SAMPLE DATA only. Contract [market2.oralys-signal.testnet](https://testnet.nearblocks.io/address/market2.oralys-signal.testnet), code hash `GkDfZJkTx3EqgVpfUWLYYBadvenGi3Fx6biYJetfsxzQ`, seller `seller.oralys-signal.testnet`, buyer `buyer.oralys-signal.testnet`. Request `NVIDIA OR (Clarity AND Act)`, window 3600 seconds, 0.01 NEAR per excerpt, 0.05 NEAR deposit, quality minimum 70. Read back from the contract after the run: request 0 is Exhausted with 5 excerpts paid and 0.05 NEAR spent; request 1 is Refunded with 1 excerpt paid and 0.04 NEAR returned to the buyer. Record: [notes/testnet-run-v2.md](notes/testnet-run-v2.md).
 
 | Step | Result | Tx |
 | --- | --- | --- |

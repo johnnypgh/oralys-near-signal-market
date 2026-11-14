@@ -50,7 +50,7 @@ Files: `notes/near-ai-attestation.json` (audit),
 
 ## Run 2: Nov 12, 2026, 7:08:41 PM ET to 7:08:42 PM ET
 
-Key: John's NEAR AI Cloud key, read from env `NEAR_AI_CLOUD_API_KEY`.
+Key: env `NEAR_AI_CLOUD_API_KEY`.
 
 1. Preflight, no key used: fresh nonce, every check passed for the gateway
    report and the one glm-5.3-flash model report. That covers the Intel TDX
@@ -80,7 +80,7 @@ Files: `notes/near-ai-attestation-run2.json` (audit),
 
 Preflight passed the same checks. The completion was rejected with HTTP 401.
 A signature lookup with the same key returned "Invalid or expired API key".
-At the time the tools read env `NEAR_API_KEY`, which on this box holds John's
+At the time the tools read env `NEAR_API_KEY`, which on the machine used for that run held a
 NEAR Builders account key, not a NEAR AI Cloud key. The tools now read
 `NEAR_AI_CLOUD_API_KEY` only and never `NEAR_API_KEY`.
 

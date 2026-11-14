@@ -3,8 +3,8 @@
 model: none (script)
 
 DRY QUOTES ONLY. NEAR Intents has no testnet. This stage sends `"dry": true` to the 1Click API, which
-returns pricing with no deposit address. Nothing is signed, deposited or spent. Going further needs
-John's separate approval for mainnet. Research notes: `notes/intents-testnet.md`.
+returns pricing with no deposit address. Nothing is signed, deposited or spent. Going further than a
+dry quote is out of scope. Research notes: `notes/intents-testnet.md`.
 
 ## Inputs
 - `_tools/intents_quote.py` (asset ids and placeholders are set there)

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Buyer agent, seller oracle and sandbox tests for the Oralys Signal Market NEAR contract",
   "type": "module",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
     "build:contract": "cd contract && cargo near build non-reproducible-wasm",
     "test:unit": "cd contract && cargo test",

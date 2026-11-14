@@ -57,5 +57,4 @@ and requires `amountOut`. On success it prints `CHECK OK`.
 It checks the saved artifact, not swap execution or settlement.
 
 ## Mainnet boundary
-Any mainnet execution would need John's separate approval through Beans.
 Signing, depositing funds, and executing a swap are out of scope for this entry.
