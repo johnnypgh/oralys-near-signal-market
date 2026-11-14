@@ -91,7 +91,7 @@ SKIP_INTENTS_QUOTE=1 _tools/run_pipeline.sh sandbox
 
 ### Testnet deployment
 
-These commands are for an operator run outside OpenClaw. A testnet demo run submits transactions. It redeploys the contract only when the code on chain differs from the local build. Replace `<ACCOUNT>` with the account name before running.
+A testnet demo run submits transactions. It redeploys the contract only when the code on chain differs from the local build. Replace `<ACCOUNT>` with the account name before running.
 
 ```sh
 cd contract && cargo near build non-reproducible-wasm && cd ..
@@ -208,7 +208,7 @@ The sandbox uses throwaway keys in memory. Build the v2 wasm first. The demo rep
 
 ### v2 testnet operator run
 
-The operator runs this outside OpenClaw. The v2 script never creates testnet accounts, deploys a contract or creates oracle keys. It uses the existing deployment named by `MARKET2_ID`, default `market2.oralys-signal.testnet`, and checks its registered seller and oracle public key. Pass existing NEAR CLI JSON account files and an existing v2 oracle JSON file by path; do not paste key contents into commands or logs.
+The v2 script never creates testnet accounts, deploys a contract or creates oracle keys. It uses the existing deployment named by `MARKET2_ID`, default `market2.oralys-signal.testnet`, and checks its registered seller and oracle public key. Pass existing NEAR CLI JSON account files and an existing v2 oracle JSON file by path; do not paste key contents into commands or logs.
 
 ```sh
 npx tsx scripts/demo-v2.ts --network testnet --buyer-key <existing-buyer-file> --seller-key <existing-seller-file> --oracle-key <existing-v2-oracle-file>
