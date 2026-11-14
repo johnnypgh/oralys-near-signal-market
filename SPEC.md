@@ -10,9 +10,9 @@ a live-signal transcript data service whose home chain is NEAR. Project name: Or
 ## 2. Hard rules
 - Testnet or local sandbox only. No mainnet, no real money, no Intents execution (dry quotes only).
 - Never print, log or commit keys. NEAR keys: `~/.near-credentials/testnet/`. Oracle keys: `.keys/` (gitignored). Model key: env `NEAR_AI_CLOUD_API_KEY`.
-- All demo data is made up and labeled SAMPLE DATA (`_shared/sample-data-rules.md`). No private Oralys code or data.
+- All demo data is made up and labeled SAMPLE DATA. No private Oralys code or data.
 - Present NEAR as Oralys's home chain. Do not mention Base anywhere in the README or docs, except as a cross-chain payment origin in the Intents quote example.
-- No em dashes or en dashes anywhere. Plain wording, no invented figures (`_shared/copy-rules.md`).
+- No em dashes or en dashes anywhere. Plain wording, no invented figures.
 - Do not commit secrets. `.keys/` and `~/.near-credentials` stay out of the tree.
 
 ## 3. Implemented state (Nov 12, 2026)
@@ -27,10 +27,9 @@ a live-signal transcript data service whose home chain is NEAR. Project name: Or
 | `integration-tests/market.test.ts` | 9 sandbox tests (near-sandbox 0.3.5, node 2.14.0), incl. double fulfill | 9 passed, 0 failed |
 | `scripts/demo.ts`, `scripts/demo.sh` | End to end readable demo, sandbox or testnet, writes each tx hash as it goes | sandbox run OK; testnet run completed Nov 12, 6:14 PM ET (`notes/testnet-run.md`) |
 | `sample-data/signal-feed.json` | 6 made-up signals, scores 88/74/52/91/39/63, price 0.02 NEAR each | validated by intake check |
-| ICM files | `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md`, `_shared/`, `_templates/`, `_tools/`, `stages/01..05` | pipeline 01 to 04 passed all checks on sandbox |
+| `_tools/` and `stages/*/output/` | Pipeline scripts and recorded stage outputs | pipeline 01 to 04 passed all checks on sandbox |
 | `_tools/test_tools.py` | 6 stdlib tests (rules, guard, dry quote) | 6 passed |
 | `npx tsc --noEmit` | Typecheck | exit 0 |
-| `_tools/links.py` | Walk test | OK, 55 of 55 paths resolve |
 
 Testnet state:
 - `oralys-signal.testnet` (faucet funded), sub-accounts `market.`, `buyer.`, `seller.oralys-signal.testnet`, keys in `~/.near-credentials/testnet/`.
@@ -41,7 +40,7 @@ Testnet state:
 
 Attestation and model path:
 - Added `_tools/attest.py`, the stage 02 attestation preflight and response signature check, fixtures and offline tests. Raw attestation reports get exact key redaction only (so they still verify), and `--require-attestation` refuses a base URL or model override.
-- README.md, notes/intents-testnet.md and the sandbox double fulfill test are in the tree. A recorded walk test passed (55 paths). A recorded run: 18 unit, 9 sandbox, 6 tools tests passed, tsc clean (`notes/test-run-2026-11-12.txt`).
+- README.md, notes/intents-testnet.md and the sandbox double fulfill test are in the tree. A recorded run: 18 unit, 9 sandbox, 6 tools tests passed, tsc clean (`notes/test-run-2026-11-12.txt`).
 - NEAR AI Cloud attestation for z-ai/glm-5.3-flash: preflight checks verified on the box without a key (Nov 12, 6:55 PM ET), gateway and model reports.
 - Keyed completions, 3 runs. Run 1, Nov 12, 6:55 PM ET: HTTP 401, the tools read `NEAR_API_KEY`, which held a NEAR Builders key. Run 2, 7:08 PM ET: HTTP error, no reply, status not recorded (the tool now logs it). Run 3, 7:12 PM ET, `--require-attestation`: verified. provider_tee signature, ecdsa, signed text matches the exact request and response hashes, signer `0x3b753b4406613c5e70ae640508632b600424fa0c` matches exactly one verified model report, crypto check passed. Stage 02 output is `mode: model`, same buys as rules. Stage 04 report regenerated; settlement receipts are from the earlier sandbox run. The tools read `NEAR_AI_CLOUD_API_KEY` only and record HTTP status and error type of a failed completion. Record: `notes/near-ai-run.md`.
 
@@ -85,15 +84,15 @@ Unit (`cd contract && cargo test`, all exist and pass): escrow and event on open
 Sandbox (`npm run test:sandbox`, all exist and pass): config; signing message matches contract; success pays seller (balance delta = price minus gas); forged key rejected and escrow stays Open; tampered score rejected; score below min rejected and stays Open; refund after deadline (early refund rejected, late fulfill rejected, buyer balance up, status Refunded); agent skips low scores. Double fulfill is covered in the sandbox tests.
 Tools (`python3 -I _tools/test_tools.py`): rules, budget cap, guard overrides a model buy the rules forbid, guard fills missing answers, model may skip, quote request always dry. The same command also runs `test_attest.py` and `test_evaluate_model.py` (attestation fixtures, signature binding, fallback labels, fake key leak test); 2 live network tests are skipped offline.
 
-## 8. ICM workspace
-Entry `AGENTS.md` (routes only, under 60 lines), `CLAUDE.md` one-line pointer, `CONTEXT.md` pipeline table, `_shared/` rules (`policy.json` is the single home for numbers: budget 0.1 NEAR, min quality 70, price cap 0.05, ttl 600 s), `_templates/`, `_tools/`. Any harness that reads AGENTS.md (OpenClaw, Hermes, Claude Code, Cursor) can run it.
+## 8. Pipeline
+`policy.json` is the single home for numbers: budget 0.1 NEAR, min quality 70, price cap 0.05, ttl 600 s. `_tools/` holds the pipeline scripts. `_shared/buying-policy.md` explains how the policy is applied and is passed to the model in stage 02.
 
 | Stage | Inputs | Process | Output | Check | Model |
 | --- | --- | --- | --- | --- | --- |
-| 01_intake | `sample-data/signal-feed.json`, `_shared/sample-data-rules.md` | `python3 -I _tools/intake.py` | `stages/01_intake/output/feed.json` | `intake.py --check` | none (script) |
-| 02_evaluate | feed, `_shared/policy.json`, `_shared/buying-policy.md`, `_shared/network.md` | `python3 -I _tools/evaluate.py` (auto) | `stages/02_evaluate/output/decisions.json` | `evaluate.py --check` + person | z-ai/glm-5.3-flash at https://cloud-api.near.ai/v1 with `NEAR_AI_CLOUD_API_KEY`; unset key: none (script) rules engine. Model sees metadata only; guard re-applies hard rules. Preflight: `GET /v1/attestation/report?provider=near` with a fresh nonce and `x-no-aliasing: true`, checked by `_tools/attest.py` (DCAP, nonce and signer binding, MRCONFIGID, RTMR3, NVIDIA NRAS). After the completion: `GET /v1/signature/<id>` with the same `signing_algo`; a `provider_tee` signer must match exactly one verified model report. `--require-attestation` falls back to rules on any attestation failure |
+| 01_intake | `sample-data/signal-feed.json` | `python3 -I _tools/intake.py` | `stages/01_intake/output/feed.json` | `intake.py --check` | none (script) |
+| 02_evaluate | feed, `_shared/policy.json`, `_shared/buying-policy.md` | `python3 -I _tools/evaluate.py` (auto) | `stages/02_evaluate/output/decisions.json` | `evaluate.py --check` | z-ai/glm-5.3-flash at https://cloud-api.near.ai/v1 with `NEAR_AI_CLOUD_API_KEY`; unset key: none (script) rules engine. Model sees metadata only; guard re-applies hard rules. Preflight: `GET /v1/attestation/report?provider=near` with a fresh nonce and `x-no-aliasing: true`, checked by `_tools/attest.py` (DCAP, nonce and signer binding, MRCONFIGID, RTMR3, NVIDIA NRAS). After the completion: `GET /v1/signature/<id>` with the same `signing_algo`; a `provider_tee` signer must match exactly one verified model report. `--require-attestation` falls back to rules on any attestation failure |
 | 03_settle | decisions, feed, policy, wasm | `npx tsx _tools/settle.ts --network sandbox|testnet` | `stages/03_settle/output/receipts.json` | `python3 -I _tools/check_receipts.py` | none (script) |
-| 04_report | decisions, receipts, `_shared/copy-rules.md` | `python3 -I _tools/report.py` | `stages/04_report/output/report.md` | `report.py --check` (no dashes, SAMPLE DATA, matches files) | none (script) |
+| 04_report | decisions, receipts | `python3 -I _tools/report.py` | `stages/04_report/output/report.md` | `report.py --check` (no dashes, SAMPLE DATA, matches files) | none (script) |
 | 05_intents_quote | `_tools/intents_quote.py` | `python3 -I _tools/intents_quote.py --amount-usdc 1` | `stages/05_intents_quote/output/quote.json` | `intents_quote.py --check` (dry, no deposit address) | none (script) |
 All at once: `_tools/run_pipeline.sh [sandbox|testnet]` (set `SKIP_INTENTS_QUOTE=1` to skip 05). The model path of 02 has one verified run (Nov 12, 7:12 PM ET, provider_tee signature verified), see `notes/near-ai-run.md`.
 
@@ -117,7 +116,7 @@ cd contract && cargo near build non-reproducible-wasm && cd ..
 # account already exists: oralys-signal.testnet. For a new one:
 # near account create-account sponsor-by-faucet-service <ACCOUNT>.testnet autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 NEAR_ACCOUNT_ID=<ACCOUNT>.testnet scripts/demo.sh testnet          # creates/reuses market., buyer., seller. sub-accounts, deploys, runs
-NEAR_ACCOUNT_ID=<ACCOUNT>.testnet _tools/run_pipeline.sh testnet  # ICM run against the deployed contract
+NEAR_ACCOUNT_ID=<ACCOUNT>.testnet _tools/run_pipeline.sh testnet  # pipeline run against the deployed contract
 ```
 Optional env: `NEAR_RPC_URL` (default https://test.rpc.fastnear.com), `MARKET_FUNDING_NEAR` 3, `BUYER_FUNDING_NEAR` 1, `SELLER_FUNDING_NEAR` 0.2.
 Explorer: `https://testnet.nearblocks.io/address/market.<ACCOUNT>.testnet`.

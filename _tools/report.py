@@ -59,7 +59,7 @@ def check():
         fail("report must say SAMPLE DATA")
     if text != build():
         fail("report does not match this run's decisions and receipts; re-run the stage")
-    print(f"CHECK OK: {OUT} matches this run's files and follows the copy rules")
+    print(f"CHECK OK: {OUT} matches this run's files, says SAMPLE DATA and has no typographic dashes")
 
 
 def main():

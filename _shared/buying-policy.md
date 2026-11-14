@@ -8,5 +8,5 @@ The numbers live in one place: `_shared/policy.json`. This file explains how the
 4. Walk the feed in order. Buy while the remaining budget covers the price. Never exceed `budget_near` in total.
 5. Every request goes on chain with the same `min_quality`, so the contract also refuses a signed score below the bar.
 6. Every request uses `ttl_seconds` as its deadline. If nothing valid arrives in time, call `refund`.
-7. A model may rank signals and write the reasons, but it cannot override rules 1 to 4. The Check in
-   `stages/02_evaluate/CONTEXT.md` re-applies them with a script.
+7. A model may rank signals and write the reasons, but it cannot override rules 1 to 4.
+   `_tools/evaluate.py --check` re-applies them with a script.

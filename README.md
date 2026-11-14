@@ -43,16 +43,10 @@ See: `mode: model`, `require_attestation: true`, and the model's reason for each
 
 ## Repo map
 
-This is an ICM folder workspace. Any harness that reads `AGENTS.md` can run it, including OpenClaw, Hermes, Claude Code and Cursor.
-
-ICM method: Van Clief and McDermott, "Interpretable Context Methodology: Folder Structure as Agent Architecture" (arXiv:2603.16021). The icm-architect skill (MIT) is linked, not copied: https://github.com/RinDig/icm-architect
-
 | Path | Purpose |
 | --- | --- |
-| [AGENTS.md](AGENTS.md) | Agent entry map and working rules |
-| [CONTEXT.md](CONTEXT.md) | Pipeline inputs, outputs and checks |
 | [stages/](stages/) | Intake, evaluation, settlement, reporting and dry quote |
-| [_shared/](_shared/) | Buying policy, network settings and data rules |
+| [_shared/](_shared/) | Buying policy and buyer numbers |
 | [_tools/](_tools/) | Pipeline scripts and checks |
 | [contract/](contract/) | Rust escrow contract and unit tests |
 | [agent/src/](agent/src/) | Buyer, seller oracle and NEAR helpers |
@@ -60,8 +54,6 @@ ICM method: Van Clief and McDermott, "Interpretable Context Methodology: Folder 
 | [scripts/](scripts/) | Demo entry points |
 | [sample-data/](sample-data/) | Made-up SAMPLE DATA feed |
 | [notes/intents-testnet.md](notes/intents-testnet.md) | Intents dry quote scope and research |
-
-When running stages through a harness, stop at each Check for person review as required by `AGENTS.md`.
 
 ## How to run
 
@@ -76,7 +68,6 @@ npm run build:contract
 npm run test:sandbox
 npm run test:tools
 npm run typecheck
-npm run walk
 ```
 
 The demo npm entry point is:
@@ -211,7 +202,6 @@ npm run test:agent:v2
 npm run test:sandbox:v2
 npx tsc --noEmit
 npm run demo:v2 -- --network sandbox
-python3 -I _tools/links.py
 ```
 
 The sandbox uses throwaway keys in memory. Build the v2 wasm first. The demo replays SAMPLE DATA with its anchor 300 seconds in the past, checks forged-signature, out-of-window, low-quality and double-pay rejections, pays five excerpts until Exhausted, then pays one excerpt on a short request and refunds the remainder. It fails if an expected result is missing. Logs and transaction hashes are saved after each step to `demo-output/demo-v2-sandbox.log` and `demo-output/demo-v2-sandbox-txs.json`, including partial results on failure.

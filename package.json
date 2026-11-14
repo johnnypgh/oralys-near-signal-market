@@ -10,7 +10,6 @@
     "test:unit": "cd contract && cargo test",
     "test:sandbox": "tsx --test integration-tests/market.test.ts",
     "test:tools": "python3 -I _tools/test_tools.py",
-    "walk": "python3 -I _tools/links.py",
     "pipeline": "_tools/run_pipeline.sh",
     "test": "npm run test:unit && npm run build:contract && npm run test:sandbox && npm run test:tools",
     "demo": "tsx scripts/demo.ts",

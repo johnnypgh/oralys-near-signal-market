@@ -1,4 +1,4 @@
-// SAMPLE DATA demo. Testnet execution is for an operator run outside OpenClaw.
+// SAMPLE DATA demo. Testnet execution is for an operator run.
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -59,12 +59,12 @@ async function main() {
       for (const tx of env.setupTxs) record(tx.label, { hash: tx.hash, ok: true, logs: [], events: [] });
     } else {
       // Existing files only. Never call testnetEnv, loadOrCreate, or deployMarket here.
-      // These files are read only when the operator runs testnet outside OpenClaw.
+      // These files are read only when the operator runs testnet.
       const buyerPath = option("--buyer-key");
       const sellerPath = option("--seller-key");
       const oraclePath = option("--oracle-key");
       if (!buyerPath || !sellerPath || !oraclePath) {
-        throw new Error("testnet requires existing --buyer-key, --seller-key and --oracle-key files; the operator runs this outside OpenClaw");
+        throw new Error("testnet requires existing --buyer-key, --seller-key and --oracle-key files");
       }
       contractId = process.env.MARKET2_ID ?? "market2.oralys-signal.testnet";
       if (!contractId.endsWith(".testnet")) throw new Error("MARKET2_ID must be a testnet account");
